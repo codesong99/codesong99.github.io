@@ -1,28 +1,99 @@
 <!DOCTYPE html>
-<html  lang="zh">
+
+
+
+
+
+<html lang="zh-CN">
 <head>
-    <meta charset="utf-8" />
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#222">
 
-<meta name="generator" content="Hexo 3.9.0" />
-
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-
-<title>hexo：从零开始搭建个人博客 - CodeSong</title>
+<link rel="stylesheet" href="/css/main.css?v=7.4.0">
 
 
-    <meta name="description" content="博客是传递、分享技术的一种高效途径，如果你不满足于github、CSND、简书等方式，还可以搭建自己的个人博客，使用hexo搭建个人博客是一种便捷有效的方式。本文介绍一种搭建个人博客的方法。通过hexo搭建个人博客，部署到github上；另外介绍如何使用github的域名绑定功能，给个人博客设置域名。 工具及平台：工具：hexo、git、Node.js、npm/cnpm平台：Linux、macOS">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.4.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="博客是传递、分享技术的一种高效途径，如果你不满足于github、CSND、简书等方式，还可以搭建自己的个人博客，使用hexo搭建个人博客是一种便捷有效的方式。本文介绍一种搭建个人博客的方法。通过hexo搭建个人博客，部署到github上；另外介绍如何使用github的域名绑定功能，给个人博客设置域名。 工具及平台：工具：hexo、git、Node.js、npm/cnpm平台：Linux、macOS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hexo：从零开始搭建个人博客">
 <meta property="og:url" content="http://yoursite.com/2019/09/21/hexo搭建个人博客/index.html">
 <meta property="og:site_name" content="CodeSong">
 <meta property="og:description" content="博客是传递、分享技术的一种高效途径，如果你不满足于github、CSND、简书等方式，还可以搭建自己的个人博客，使用hexo搭建个人博客是一种便捷有效的方式。本文介绍一种搭建个人博客的方法。通过hexo搭建个人博客，部署到github上；另外介绍如何使用github的域名绑定功能，给个人博客设置域名。 工具及平台：工具：hexo、git、Node.js、npm/cnpm平台：Linux、macOS">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/images/og_image.png">
+<meta property="og:image" content="http://tva1.sinaimg.cn/large/007X8olVly1g76bkdvpyjj30qw0dzjrt.jpg">
+<meta property="og:image" content="http://tva1.sinaimg.cn/large/007X8olVly1g76dtywadfj30lx0aq3z0.jpg">
+<meta property="og:image" content="http://tva1.sinaimg.cn/large/007X8olVly1g76d5z629wj30o908v74h.jpg">
+<meta property="og:image" content="http://tva1.sinaimg.cn/large/007X8olVly1g76esld1nej31f90u0h3q.jpg">
+<meta property="og:image" content="http://tva1.sinaimg.cn/large/007X8olVly1g76e6qf371j30b005ot8p.jpg">
+<meta property="og:image" content="http://tva1.sinaimg.cn/large/007X8olVly1g76ex5em5uj30ye09xjs2.jpg">
+<meta property="og:image" content="http://tva1.sinaimg.cn/large/007X8olVly1g76f1wqqoaj30jc04ugll.jpg">
+<meta property="og:image" content="http://tva1.sinaimg.cn/large/007X8olVly1g76y11uxy2j30s9093gm9.jpg">
+<meta property="og:image" content="http://tva1.sinaimg.cn/large/007X8olVly1g76fj49qunj30qo0g8dg7.jpg">
+<meta property="og:image" content="http://tva1.sinaimg.cn/large/007X8olVly1g76fvakvl8j30jc0830t9.jpg">
+<meta property="og:image" content="http://tva1.sinaimg.cn/large/007X8olVly1g76fovvlo3j317g09hjs1.jpg">
 <meta property="og:updated_time" content="2019-09-21T02:53:16.622Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo：从零开始搭建个人博客">
 <meta name="twitter:description" content="博客是传递、分享技术的一种高效途径，如果你不满足于github、CSND、简书等方式，还可以搭建自己的个人博客，使用hexo搭建个人博客是一种便捷有效的方式。本文介绍一种搭建个人博客的方法。通过hexo搭建个人博客，部署到github上；另外介绍如何使用github的域名绑定功能，给个人博客设置域名。 工具及平台：工具：hexo、git、Node.js、npm/cnpm平台：Linux、macOS">
-<meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
+<meta name="twitter:image" content="http://tva1.sinaimg.cn/large/007X8olVly1g76bkdvpyjj30qw0dzjrt.jpg">
+  <link rel="canonical" href="http://yoursite.com/2019/09/21/hexo搭建个人博客/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>hexo：从零开始搭建个人博客 | CodeSong</title>
+  
 
 
 
@@ -30,144 +101,160 @@
 
 
 
-<link rel="icon" href="/images/favicon.svg">
 
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
 
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
 
-    
-    
-    
-    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
-    
-
-    
-    
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
-    
-
-    
-    
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
-
-
-    
-    
-    
-    
-
-<link rel="stylesheet" href="/css/back-to-top.css">
-
-
-    
-    
-
-    
-    
-    
-    
-
-    
-    
-<link rel="stylesheet" href="/css/progressbar.css">
-<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
-
-    
-    
-    
-
-
-<link rel="stylesheet" href="/css/style.css">
 </head>
-<body class="is-3-column">
-    <nav class="navbar navbar-main">
-    <div class="container">
-        <div class="navbar-brand is-flex-center">
-            <a class="navbar-item navbar-logo" href="/">
-            
-                <img src="/images/logo.svg" alt="hexo：从零开始搭建个人博客" height="28">
-            
-            </a>
-        </div>
-        <div class="navbar-menu">
-            
-            <div class="navbar-start">
-                
-                <a class="navbar-item"
-                href="/">Home</a>
-                
-                <a class="navbar-item"
-                href="/archives">Archives</a>
-                
-                <a class="navbar-item"
-                href="/categories">Categories</a>
-                
-                <a class="navbar-item"
-                href="/tags">Tags</a>
-                
-                <a class="navbar-item"
-                href="/about">About</a>
-                
-            </div>
-            
-            <div class="navbar-end">
-                
-                    
-                    
-                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
-                        
-                        <i class="fab fa-github"></i>
-                        
-                    </a>
-                    
-                
-                
-                
-                <a class="navbar-item search" title="搜索" href="javascript:;">
-                    <i class="fas fa-search"></i>
-                </a>
-                
-            </div>
-        </div>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CodeSong</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
     </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+  </ul>
+
+    
+
 </nav>
+</div>
+    </header>
+
     
-    <section class="section">
-        <div class="container">
-            <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-21T02:54:26.737Z">2019-09-21</time>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    14 分钟 读完 (大约 2056 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
             
-                hexo：从零开始搭建个人博客
-            
+
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/21/hexo搭建个人博客/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Song Weiwei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CodeSong">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">hexo：从零开始搭建个人博客
+
+          
         </h1>
-        <div class="content">
-            <p>博客是传递、分享技术的一种高效途径，如果你不满足于github、CSND、简书等方式，还可以搭建自己的个人博客，使用hexo搭建个人博客是一种便捷有效的方式。<br>本文介绍一种搭建个人博客的方法。<strong>通过hexo搭建个人博客，部署到github上</strong>；另外介绍如何使用github的域名绑定功能，给个人博客设置域名。</p>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-09-21 10:54:26 / 修改时间：10:53:16" itemprop="dateCreated datePublished" datetime="2019-09-21T10:54:26+08:00">2019-09-21</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>博客是传递、分享技术的一种高效途径，如果你不满足于github、CSND、简书等方式，还可以搭建自己的个人博客，使用hexo搭建个人博客是一种便捷有效的方式。<br>本文介绍一种搭建个人博客的方法。<strong>通过hexo搭建个人博客，部署到github上</strong>；另外介绍如何使用github的域名绑定功能，给个人博客设置域名。</p>
 <h2 id="工具及平台："><a href="#工具及平台：" class="headerlink" title="工具及平台："></a>工具及平台：</h2><p>工具：hexo、git、Node.js、npm/cnpm<br>平台：Linux、macOS、Windows等<br>不同系统操作基本相同，本文以win10为例进行演示。<br>（windows环境需已安装git并配置为环境变量）</p>
 <h2 id="搭建过程："><a href="#搭建过程：" class="headerlink" title="搭建过程："></a>搭建过程：</h2><h3 id="1、安装hexo"><a href="#1、安装hexo" class="headerlink" title="1、安装hexo"></a>1、安装hexo</h3><h4 id="（1）安装Node-js"><a href="#（1）安装Node-js" class="headerlink" title="（1）安装Node.js"></a>（1）安装Node.js</h4><p>Node.js是一个基于Chrome V8引擎的JavaScript运行环境，能够是js运行在服务端。安装方法非常简单：<br>nodejs.org下载安装即可。推荐下载LTS（Long Time Support）版本<br><img src="http://tva1.sinaimg.cn/large/007X8olVly1g76bkdvpyjj30qw0dzjrt.jpg" alt="下载安装Node.js" title="下载安装Node.js"></p>
 <h4 id="（2）安装NPM"><a href="#（2）安装NPM" class="headerlink" title="（2）安装NPM"></a>（2）安装NPM</h4><p>NPM（Node Package Manager）是基于Node.js的包管理工具，方便开发人员分享和获取第三方包并使用。<br>由于NPM镜像是国外资源，安装十分缓慢，因此我们选择安装淘宝团队做的镜像cnpm。在win10环境下，以管理员身份运行CMD，输入以下命令：</p>
@@ -204,619 +291,181 @@ hexo s</code></pre><p>至此我们就完成了个人博客的创建，以及如�
 <p>这样，我们就可以同时通过 用户名.github.io 和自己注册的域名来访问个人博客了。</p>
 <p>以上就是本文的全部内容了，希望大家早日熟练hexo clean 、hexo g 、hexo d 三连~</p>
 
-        </div>
-        
-        
-        
     </div>
-</div>
 
-
-
-<div class="card">
-    <div class="card-content">
-        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
-        <div class="buttons is-centered">
-            
-                
-<div class="notification is-danger">
-    You forgot to set the <code>qrcode</code> for Alipay. Please set it in <code>_config.yml</code>.
-</div>
-
-                
-                
-<div class="notification is-danger">
-    You forgot to set the <code>qrcode</code> for Wechat. Please set it in <code>_config.yml</code>.
-</div>
-
-                
-                <!-- Visit https://www.paypal.com/donate/buttons/ to get your donate button -->
-
-<div class="notification is-danger">
-    You forgot to set the <code>business</code> and <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.
-</div>
-
-                
-                
-<div class="notification is-danger">
-    You forgot to set the <code>url</code> Patreon. Please set it in <code>_config.yml</code>.
-</div>
-
-                
-        </div>
-    </div>
-</div>
-
-
-
-<div class="card card-transparent">
-    <div class="level post-navigation is-flex-wrap is-mobile">
-        
-        
-        <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/09/20/hello-world/">
-                <span class="level-item">Hello World</span>
-                <i class="level-item fas fa-chevron-right"></i>
-            </a>
-        </div>
-        
-    </div>
-</div>
-
-
-</div>
-                
-
-
-
-
-<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+    
     
         
-<div class="card widget">
-    <div class="card-content">
-        <nav class="level">
-            <div class="level-item has-text-centered" style="flex-shrink: 1">
-                <div>
-                    
-                    <figure class="image is-128x128 has-mb-6">
-                        <img class="" src="/images/avatar.png" alt="宋威威">
-                    </figure>
-                    
-                    <p class="is-size-4 is-block">
-                        宋威威
-                    </p>
-                    
-                    
-                    <p class="is-size-6 is-block">
-                        东南大学自动化学院
-                    </p>
-                    
-                    
-                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
-                        <i class="fas fa-map-marker-alt has-mr-7"></i>
-                        <span>江苏·南京</span>
-                    </p>
-                    
-                </div>
-            </div>
-        </nav>
-        <nav class="level is-mobile">
-            <div class="level-item has-text-centered is-marginless">
-                <div>
-                    <p class="heading">
-                        文章
-                    </p>
-                    <p class="title has-text-weight-normal">
-                        2
-                    </p>
-                </div>
-            </div>
-            <div class="level-item has-text-centered is-marginless">
-                <div>
-                    <p class="heading">
-                        分类
-                    </p>
-                    <p class="title has-text-weight-normal">
-                        0
-                    </p>
-                </div>
-            </div>
-            <div class="level-item has-text-centered is-marginless">
-                <div>
-                    <p class="heading">
-                        标签
-                    </p>
-                    <p class="title has-text-weight-normal">
-                        0
-                    </p>
-                </div>
-            </div>
-        </nav>
-        <div class="level">
-            <a class="level-item button is-link is-rounded" href="https://github.com/ppoffice" target="_blank">
-                关注我</a>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            
-            <a class="level-item button is-white is-marginless" target="_blank"
-                title="Github" href="https://github.com/ppoffice">
-                
-                <i class="fab fa-github"></i>
-                
-            </a>
-            
-            <a class="level-item button is-white is-marginless" target="_blank"
-                title="Facebook" href="https://facebook.com">
-                
-                <i class="fab fa-facebook"></i>
-                
-            </a>
-            
-            <a class="level-item button is-white is-marginless" target="_blank"
-                title="Twitter" href="https://twitter.com">
-                
-                <i class="fab fa-twitter"></i>
-                
-            </a>
-            
-            <a class="level-item button is-white is-marginless" target="_blank"
-                title="Dribbble" href="https://dribbble.com">
-                
-                <i class="fab fa-dribbble"></i>
-                
-            </a>
-            
-            <a class="level-item button is-white is-marginless" target="_blank"
-                title="RSS" href="/">
-                
-                <i class="fas fa-rss"></i>
-                
-            </a>
-            
-        </div>
-        
-    </div>
-</div>
-    
-        
-    
+      
+
+      <footer class="post-footer">
+
         
 
-<div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-        <h3 class="menu-label">
-            链接
-        </h3>
-        <ul class="menu-list">
-        
-            <li>
-                <a class="level is-mobile" href="https://hexo.io" target="_blank">
-                    <span class="level-left">
-                        <span class="level-item">Hexo</span>
-                    </span>
-                    <span class="level-right">
-                        <span class="level-item tag">hexo.io</span>
-                    </span>
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2019/09/20/hello-world/" rel="next" title="Hello World">
+                  <i class="fa fa-chevron-left"></i> Hello World
                 </a>
-            </li>
-        
-            <li>
-                <a class="level is-mobile" href="https://github.com/ppoffice" target="_blank">
-                    <span class="level-left">
-                        <span class="level-item">PPOffice</span>
-                    </span>
-                    <span class="level-right">
-                        <span class="level-item tag">github.com</span>
-                    </span>
-                </a>
-            </li>
-        
-        </ul>
-        </div>
-    </div>
-</div>
-
-
-    
-        
-<div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                分类
-            </h3>
-            <ul class="menu-list">
-            
-            </ul>
-        </div>
-    </div>
-</div>
-    
-        
-    
-    
-        <div class="column-right-shadow is-hidden-widescreen ">
-        
-            
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="menu-label">
-            最新文章
-        </h3>
-        
-        <article class="media">
-            
-            <a href="/2019/09/21/hexo搭建个人博客/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="hexo：从零开始搭建个人博客">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-21T02:54:26.737Z">2019-09-21</time></div>
-                    <a href="/2019/09/21/hexo搭建个人博客/" class="title has-link-black-ter is-size-6 has-text-weight-normal">hexo：从零开始搭建个人博客</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
+              
             </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/09/20/hello-world/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Hello World">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-20T01:44:25.943Z">2019-09-20</time></div>
-                    <a href="/2019/09/20/hello-world/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hello World</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-    </div>
-</div>
 
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
         
-            <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-        <h3 class="menu-label">
-            归档
-        </h3>
-        <ul class="menu-list">
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
         
-        <li>
-            <a class="level is-marginless" href="/archives/2019/09/">
-                <span class="level-start">
-                    <span class="level-item">九月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">2</span>
-                </span>
-            </a>
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
         </li>
-        
-        </ul>
-        </div>
-    </div>
-</div>
-        
-            <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                标签
-            </h3>
-            <div class="field is-grouped is-grouped-multiline">
-                
-            </div>
-        </div>
-    </div>
-</div>
-        
-        </div>
-    
-</div>
-
-                
-
-
-
-
-<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
-    
-        
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="menu-label">
-            最新文章
-        </h3>
-        
-        <article class="media">
-            
-            <a href="/2019/09/21/hexo搭建个人博客/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="hexo：从零开始搭建个人博客">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-21T02:54:26.737Z">2019-09-21</time></div>
-                    <a href="/2019/09/21/hexo搭建个人博客/" class="title has-link-black-ter is-size-6 has-text-weight-normal">hexo：从零开始搭建个人博客</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/09/20/hello-world/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Hello World">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-20T01:44:25.943Z">2019-09-20</time></div>
-                    <a href="/2019/09/20/hello-world/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hello World</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-    </div>
-</div>
-
-    
-        <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-        <h3 class="menu-label">
-            归档
-        </h3>
-        <ul class="menu-list">
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/09/">
-                <span class="level-start">
-                    <span class="level-item">九月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">2</span>
-                </span>
-            </a>
+        <li class="sidebar-nav-overview">
+          站点概览
         </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#工具及平台："><span class="nav-number">1.</span> <span class="nav-text">工具及平台：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#搭建过程："><span class="nav-number">2.</span> <span class="nav-text">搭建过程：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、安装hexo"><span class="nav-number">2.1.</span> <span class="nav-text">1、安装hexo</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#（1）安装Node-js"><span class="nav-number">2.1.1.</span> <span class="nav-text">（1）安装Node.js</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（2）安装NPM"><span class="nav-number">2.1.2.</span> <span class="nav-text">（2）安装NPM</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（3）安装hexo"><span class="nav-number">2.1.3.</span> <span class="nav-text">（3）安装hexo</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、使用hexo搭建博客"><span class="nav-number">2.2.</span> <span class="nav-text">2、使用hexo搭建博客</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#（1）创建工作路径"><span class="nav-number">2.2.1.</span> <span class="nav-text">（1）创建工作路径</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（2）初始化博客"><span class="nav-number">2.2.2.</span> <span class="nav-text">（2）初始化博客</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（3）启动、生成博客"><span class="nav-number">2.2.3.</span> <span class="nav-text">（3）启动、生成博客</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（4）新建文章"><span class="nav-number">2.2.4.</span> <span class="nav-text">（4）新建文章</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（5）更新博客"><span class="nav-number">2.2.5.</span> <span class="nav-text">（5）更新博客</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、将博客部署到github上"><span class="nav-number">2.3.</span> <span class="nav-text">3、将博客部署到github上</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#（1）在github上新建仓库"><span class="nav-number">2.3.1.</span> <span class="nav-text">（1）在github上新建仓库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2）在blog目录下安装一个git的部署插件"><span class="nav-number">2.3.2.</span> <span class="nav-text">2）在blog目录下安装一个git的部署插件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3）修改blog目录下的配置文件"><span class="nav-number">2.3.3.</span> <span class="nav-text">3）修改blog目录下的配置文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（4）将博客部署远端"><span class="nav-number">2.3.4.</span> <span class="nav-text">（4）将博客部署远端</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、One-More-Thing"><span class="nav-number">2.4.</span> <span class="nav-text">4、One More Thing</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#绑定域名"><span class="nav-number">2.4.1.</span> <span class="nav-text">绑定域名</span></a></li></ol></li></ol></li></ol></div>
         
-        </ul>
-        </div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Song Weiwei</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+  </nav>
+
+
+
+      </div>
+
     </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Song Weiwei</span>
 </div>
-    
-        <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                标签
-            </h3>
-            <div class="field is-grouped is-grouped-multiline">
-                
-            </div>
-        </div>
-    </div>
-</div>
-    
-    
-</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.4.0</div>
 
-            </div>
-        </div>
-    </section>
-    <footer class="footer">
-    <div class="container">
-        <div class="level">
-            <div class="level-start has-text-centered-mobile">
-                <a class="footer-logo is-block has-mb-6" href="/">
-                
-                    <img src="/images/logo.svg" alt="hexo：从零开始搭建个人博客" height="28">
-                
-                </a>
-                <p class="is-size-7">
-                &copy; 2019 Song Weiwei&nbsp;
-                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
-                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
-                
-                </p>
-            </div>
-            <div class="level-end">
-            
-                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
-                
-                
-                <p class="control">
-                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
-                        
-                        <i class="fab fa-creative-commons"></i>
-                        
-                    </a>
-                </p>
-                
-                <p class="control">
-                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
-                        
-                        <i class="fab fa-creative-commons-by"></i>
-                        
-                    </a>
-                </p>
-                
-                <p class="control">
-                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
-                        
-                        <i class="fab fa-github"></i>
-                        
-                    </a>
-                </p>
-                
-                </div>
-            
-            </div>
-        </div>
-    </div>
-</footer>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
-<script>moment.locale("zh-CN");</script>
-
-<script>
-var IcarusThemeSettings = {
-    article: {
-        highlight: {
-            clipboard: true,
-            fold: 'unfolded'
-        }
-    }
-};
-</script>
-
-
-    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+        
 
 
 
-    
-    
-    
-    <script src="/js/animation.js"></script>
-    
-
-    
-    
-    
-    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
-    <script src="/js/gallery.js" defer></script>
-    
-
-    
-    
-
-<div id="outdated">
-    <h6>Your browser is out-of-date!</h6>
-    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
-            my browser now </a></p>
-    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        outdatedBrowser({
-            bgColor: '#f25648',
-            color: '#ffffff',
-            lowerThan: 'flex'
-        });
-    });
-</script>
 
 
-    
-    
-<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    MathJax.Hub.Config({
-        'HTML-CSS': {
-            matchFontHeight: false
-        },
-        SVG: {
-            matchFontHeight: false
-        },
-        CommonHTML: {
-            matchFontHeight: false
-        },
-        tex2jax: {
-            inlineMath: [
-                ['$','$'],
-                ['\\(','\\)']
-            ]
-        }
-    });
-});
-</script>
-
-    
-    
-
-<a id="back-to-top" title="回到顶端" href="javascript:;">
-    <i class="fas fa-chevron-up"></i>
-</a>
-<script src="/js/back-to-top.js" defer></script>
 
 
-    
-    
-
-    
-    
-    
-    
-
-    
-    
-    
-    
-    
 
 
-<script src="/js/main.js" defer></script>
 
-    
-    <div class="searchbox ins-search">
-    <div class="searchbox-container ins-search-container">
-        <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
-            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="searchbox-result-wrapper ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
-    </div>
-</div>
-<script>
-    (function (window) {
-        var INSIGHT_CONFIG = {
-            TRANSLATION: {
-                POSTS: '文章',
-                PAGES: '页面',
-                CATEGORIES: '分类',
-                TAGS: '标签',
-                UNTITLED: '(无标题)',
-            },
-            CONTENT_URL: '/content.json',
-        };
-        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-    })(window);
-</script>
-<script src="/js/insight.js" defer></script>
-<link rel="stylesheet" href="/css/search.css">
-<link rel="stylesheet" href="/css/insight.css">
-    
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+
+
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/utils.js?v=7.4.0"></script><script src="/js/motion.js?v=7.4.0"></script>
+<script src="/js/schemes/muse.js?v=7.4.0"></script>
+<script src="/js/next-boot.js?v=7.4.0"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
 </body>
 </html>
