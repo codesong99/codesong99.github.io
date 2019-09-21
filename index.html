@@ -145,13 +145,13 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-20T16:24:50.077Z">2019-09-21</time>
+                <time class="level-item has-text-grey" datetime="2019-09-21T02:26:22.191Z">2019-09-21</time>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    13 分钟 读完 (大约 1879 个字)
+                    13 分钟 读完 (大约 1933 个字)
                 </span>
                 
                 
@@ -193,8 +193,9 @@ hexo s</code></pre><p>至此我们就完成了个人博客的创建，以及如�
 <p>接下来就来介绍如何将博客部署到github上进行访问。</p>
 <p>###3、将博客部署到github上</p>
 <p>####（1）在github上新建仓库<br>仓库名称必须为 xxx.github.io(其中xxx为自己的github用户名)，如codesong99.github.io,并得到仓库地址：<br><img src="http://tva1.sinaimg.cn/large/007X8olVly1g76ex5em5uj30ye09xjs2.jpg" alt="github仓库地址" title="github仓库地址"></p>
-<p>####（2）修改blog目录下的配置文件<br>打开blog目录下的_config.yml文件，在最后几行的部署（deploy）信息位置添加以下配置：<br><img src="http://tva1.sinaimg.cn/large/007X8olVly1g76f1wqqoaj30jc04ugll.jpg" alt="deploy配置" title="deploy配置"><br>部署类型为git，仓库地址为刚才获得的github仓库地址，branch设置为master，修改完成后保存并关闭。<br>注意冒号后有一个空格。</p>
-<p>####（3）将博客部署远端<br>回到CMD窗口，在blog目录下输入一下命令，将博客推到远端：</p>
+<p>####（2）在blog目录下安装一个git的部署插件</p>
+<pre><code>cnpm install --save hexo-deployer-git</code></pre><p>####（3）修改blog目录下的配置文件<br>打开blog目录下的_config.yml文件，在最后几行的部署（deploy）信息位置添加以下配置：<br><img src="http://tva1.sinaimg.cn/large/007X8olVly1g76f1wqqoaj30jc04ugll.jpg" alt="deploy配置" title="deploy配置"><br>部署类型为git，仓库地址为刚才获得的github仓库地址，branch设置为master，修改完成后保存并关闭。<br>注意冒号后有一个空格。</p>
+<p>####（4）将博客部署远端<br>回到CMD窗口，在blog目录下输入一下命令，将博客推到远端：</p>
 <pre><code>hexo d</code></pre><p>这个”d”就是deploy的意思。此过程需要输入github账号及密码。</p>
 <p>至此我们就完成了搭建hexo博客并部署到github上的所有工作，在浏览器中输入xxx.github.io即可访问自己的个人博客。</p>
 <p>###4、One More Thing<br>虽然我们已经完成了个人博客的搭建，并部署到github上进行访问，但默认的landscape主题、xxxxxxx.github.io的地址是不是感觉跟真正的博客还有些不同？<br>上文中已经简单提到，我们可以自己修改个人博客的主题（将博客主题放在theme路径下），具体实现就要考验大家的审美和动手能力了，网上也有很多优秀的修改方法、模板，本文不再介绍。<br>接下来我将简单介绍如何设置自己的域名来访问博客。</p>
@@ -203,6 +204,7 @@ hexo s</code></pre><p>至此我们就完成了个人博客的创建，以及如�
 <p>然后ping一下自己github仓库的ip：<br><img src="http://tva1.sinaimg.cn/large/007X8olVly1g76fvakvl8j30jc0830t9.jpg" alt="ping" title="ping"></p>
 <p>最后将自己的域名解析中添加www、@两条A型记录，其中“记录值”为刚才ping到的github仓库ip<br><img src="http://tva1.sinaimg.cn/large/007X8olVly1g76fovvlo3j317g09hjs1.jpg" alt="域名解析" title="添加域名解析"></p>
 <p>这样，我们就可以同时通过 用户名.github.io 和自己注册的域名来访问个人博客了。</p>
+<p>以上就是本文的全部内容了，希望大家早日熟练hexo clean 、hexo g 、hexo d 三连~</p>
 
         </div>
         
@@ -465,7 +467,7 @@ hexo s</code></pre><p>至此我们就完成了个人博客的创建，以及如�
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-20T16:24:50.077Z">2019-09-21</time></div>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-21T02:26:22.191Z">2019-09-21</time></div>
                     <a href="/2019/09/21/hexo搭建个人博客/" class="title has-link-black-ter is-size-6 has-text-weight-normal">hexo：从零开始搭建个人博客</a>
                     <p class="is-size-7 is-uppercase">
                         
@@ -562,7 +564,7 @@ hexo s</code></pre><p>至此我们就完成了个人博客的创建，以及如�
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-20T16:24:50.077Z">2019-09-21</time></div>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-21T02:26:22.191Z">2019-09-21</time></div>
                     <a href="/2019/09/21/hexo搭建个人博客/" class="title has-link-black-ter is-size-6 has-text-weight-normal">hexo：从零开始搭建个人博客</a>
                     <p class="is-size-7 is-uppercase">
                         
