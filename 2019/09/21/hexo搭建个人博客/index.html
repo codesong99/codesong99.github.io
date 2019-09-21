@@ -10,18 +10,18 @@
 <title>hexo：从零开始搭建个人博客 - CodeSong</title>
 
 
-    <meta name="description" content="博客是传递、分享技术的一种高效途径，如果你不满足于github、CSND、简书等方式，还可以搭建自己的个人博客，使用hexo搭建个人博客是一种便捷有效的方式。本文介绍一种搭建个人博客的方法。通过hexo搭建个人博客，部署到github上；另外介绍如何使用github的域名绑定功能，给个人博客设置域名。 ##工具及平台：工具：hexo、git、Node.js、npm/cnpm平台：Linux、mac">
+    <meta name="description" content="博客是传递、分享技术的一种高效途径，如果你不满足于github、CSND、简书等方式，还可以搭建自己的个人博客，使用hexo搭建个人博客是一种便捷有效的方式。本文介绍一种搭建个人博客的方法。通过hexo搭建个人博客，部署到github上；另外介绍如何使用github的域名绑定功能，给个人博客设置域名。 工具及平台：工具：hexo、git、Node.js、npm/cnpm平台：Linux、macOS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hexo：从零开始搭建个人博客">
 <meta property="og:url" content="http://yoursite.com/2019/09/21/hexo搭建个人博客/index.html">
 <meta property="og:site_name" content="CodeSong">
-<meta property="og:description" content="博客是传递、分享技术的一种高效途径，如果你不满足于github、CSND、简书等方式，还可以搭建自己的个人博客，使用hexo搭建个人博客是一种便捷有效的方式。本文介绍一种搭建个人博客的方法。通过hexo搭建个人博客，部署到github上；另外介绍如何使用github的域名绑定功能，给个人博客设置域名。 ##工具及平台：工具：hexo、git、Node.js、npm/cnpm平台：Linux、mac">
+<meta property="og:description" content="博客是传递、分享技术的一种高效途径，如果你不满足于github、CSND、简书等方式，还可以搭建自己的个人博客，使用hexo搭建个人博客是一种便捷有效的方式。本文介绍一种搭建个人博客的方法。通过hexo搭建个人博客，部署到github上；另外介绍如何使用github的域名绑定功能，给个人博客设置域名。 工具及平台：工具：hexo、git、Node.js、npm/cnpm平台：Linux、macOS">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
-<meta property="og:updated_time" content="2019-09-21T02:26:04.943Z">
+<meta property="og:updated_time" content="2019-09-21T02:53:16.622Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo：从零开始搭建个人博客">
-<meta name="twitter:description" content="博客是传递、分享技术的一种高效途径，如果你不满足于github、CSND、简书等方式，还可以搭建自己的个人博客，使用hexo搭建个人博客是一种便捷有效的方式。本文介绍一种搭建个人博客的方法。通过hexo搭建个人博客，部署到github上；另外介绍如何使用github的域名绑定功能，给个人博客设置域名。 ##工具及平台：工具：hexo、git、Node.js、npm/cnpm平台：Linux、mac">
+<meta name="twitter:description" content="博客是传递、分享技术的一种高效途径，如果你不满足于github、CSND、简书等方式，还可以搭建自己的个人博客，使用hexo搭建个人博客是一种便捷有效的方式。本文介绍一种搭建个人博客的方法。通过hexo搭建个人博客，部署到github上；另外介绍如何使用github的域名绑定功能，给个人博客设置域名。 工具及平台：工具：hexo、git、Node.js、npm/cnpm平台：Linux、macOS">
 <meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
 
 
@@ -148,13 +148,13 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-21T02:26:22.191Z">2019-09-21</time>
+                <time class="level-item has-text-grey" datetime="2019-09-21T02:54:26.737Z">2019-09-21</time>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    13 分钟 读完 (大约 1933 个字)
+                    14 分钟 读完 (大约 2056 个字)
                 </span>
                 
                 
@@ -168,43 +168,38 @@
         </h1>
         <div class="content">
             <p>博客是传递、分享技术的一种高效途径，如果你不满足于github、CSND、简书等方式，还可以搭建自己的个人博客，使用hexo搭建个人博客是一种便捷有效的方式。<br>本文介绍一种搭建个人博客的方法。<strong>通过hexo搭建个人博客，部署到github上</strong>；另外介绍如何使用github的域名绑定功能，给个人博客设置域名。</p>
-<p>##工具及平台：<br>工具：hexo、git、Node.js、npm/cnpm<br>平台：Linux、macOS、Windows等<br>不同系统操作基本相同，本文以win10为例进行演示。<br>（windows环境需已安装git并配置为环境变量）</p>
-<p>##搭建过程：</p>
-<p>###1、安装hexo</p>
-<p>####（1）安装Node.js<br>Node.js是一个基于Chrome V8引擎的JavaScript运行环境，能够是js运行在服务端。安装方法非常简单：<br>nodejs.org下载安装即可。推荐下载LTS（Long Time Support）版本<br><img src="http://tva1.sinaimg.cn/large/007X8olVly1g76bkdvpyjj30qw0dzjrt.jpg" alt="下载安装Node.js" title="下载安装Node.js"></p>
-<p>####（2）安装NPM<br>NPM（Node Package Manager）是基于Node.js的包管理工具，方便开发人员分享和获取第三方包并使用。<br>由于NPM镜像是国外资源，安装十分缓慢，因此我们选择安装淘宝团队做的镜像cnpm。在win10环境下，以管理员身份运行CMD，输入以下命令：</p>
+<h2 id="工具及平台："><a href="#工具及平台：" class="headerlink" title="工具及平台："></a>工具及平台：</h2><p>工具：hexo、git、Node.js、npm/cnpm<br>平台：Linux、macOS、Windows等<br>不同系统操作基本相同，本文以win10为例进行演示。<br>（windows环境需已安装git并配置为环境变量）</p>
+<h2 id="搭建过程："><a href="#搭建过程：" class="headerlink" title="搭建过程："></a>搭建过程：</h2><h3 id="1、安装hexo"><a href="#1、安装hexo" class="headerlink" title="1、安装hexo"></a>1、安装hexo</h3><h4 id="（1）安装Node-js"><a href="#（1）安装Node-js" class="headerlink" title="（1）安装Node.js"></a>（1）安装Node.js</h4><p>Node.js是一个基于Chrome V8引擎的JavaScript运行环境，能够是js运行在服务端。安装方法非常简单：<br>nodejs.org下载安装即可。推荐下载LTS（Long Time Support）版本<br><img src="http://tva1.sinaimg.cn/large/007X8olVly1g76bkdvpyjj30qw0dzjrt.jpg" alt="下载安装Node.js" title="下载安装Node.js"></p>
+<h4 id="（2）安装NPM"><a href="#（2）安装NPM" class="headerlink" title="（2）安装NPM"></a>（2）安装NPM</h4><p>NPM（Node Package Manager）是基于Node.js的包管理工具，方便开发人员分享和获取第三方包并使用。<br>由于NPM镜像是国外资源，安装十分缓慢，因此我们选择安装淘宝团队做的镜像cnpm。在win10环境下，以管理员身份运行CMD，输入以下命令：</p>
 <pre><code>npm install -g cnpm --registry=https://registry.npm.taobao.org</code></pre><p>这样我们便完成了Node.js和NPM的安装，此时我们可以通过查询版本号的方式来验证Node.js和NPM是否安装成功：</p>
 <pre><code>node -v
 npm -v</code></pre><p>如果出现两者的版本信息，说明我们已经成功安装了Node.js和NPM，很简单是吧。</p>
-<p>####（3）安装hexo<br>使用cnpm安装hexo：</p>
+<h4 id="（3）安装hexo"><a href="#（3）安装hexo" class="headerlink" title="（3）安装hexo"></a>（3）安装hexo</h4><p>使用cnpm安装hexo：</p>
 <pre><code>cnpm install -g hexo-cli    //安装hexo</code></pre><p>同样可以通过查询版本信息确认hexo是否安装成功：</p>
-<pre><code>hexo -v</code></pre><p>###2、使用hexo搭建博客</p>
-<p>####（1）创建工作路径<br>首先在电脑任意位置（如D盘）新建一个文件夹，比如我们命名为blog，在windows系统下，此操作可以直接在D盘操作，或用命令行创建：</p>
-<pre><code>mkdir blog</code></pre><p>####（2）初始化博客<br>进入blog文件夹并初始化博客：</p>
+<pre><code>hexo -v</code></pre><h3 id="2、使用hexo搭建博客"><a href="#2、使用hexo搭建博客" class="headerlink" title="2、使用hexo搭建博客"></a>2、使用hexo搭建博客</h3><h4 id="（1）创建工作路径"><a href="#（1）创建工作路径" class="headerlink" title="（1）创建工作路径"></a>（1）创建工作路径</h4><p>首先在电脑任意位置（如D盘）新建一个文件夹，比如我们命名为blog，在windows系统下，此操作可以直接在D盘操作，或用命令行创建：</p>
+<pre><code>mkdir blog</code></pre><h4 id="（2）初始化博客"><a href="#（2）初始化博客" class="headerlink" title="（2）初始化博客"></a>（2）初始化博客</h4><p>进入blog文件夹并初始化博客：</p>
 <pre><code>cd blog
 hexo init</code></pre><p>注意：在macOS或Linux环境需以管理员身份进行操作</p>
 <p>此时我们就通过hexo完成了博客的初始搭建，hexo会默认创建一个landscape主题。此过程有时较慢，耐心等待。<br>这时我们打开电脑的blog文件夹，会发现生成了许多文件，其中theme文件夹内就是我们博客的主题，后续更改主题需要在此操作。<br><img src="http://tva1.sinaimg.cn/large/007X8olVly1g76dtywadfj30lx0aq3z0.jpg" alt="blog文件夹" title="blog文件夹"></p>
-<p>####（3）启动、生成博客<br>启动博客：</p>
+<h4 id="（3）启动、生成博客"><a href="#（3）启动、生成博客" class="headerlink" title="（3）启动、生成博客"></a>（3）启动、生成博客</h4><p>启动博客：</p>
 <pre><code>hexo s</code></pre><p>启动后会出现本地访问的端口<br><img src="http://tva1.sinaimg.cn/large/007X8olVly1g76d5z629wj30o908v74h.jpg" alt="hexo启动" title="hexo启动"><br>在浏览器中输入 localhost:4000 ,就可以进入我们刚刚生成的博客主页了。大概长这个样子：<br><img src="http://tva1.sinaimg.cn/large/007X8olVly1g76esld1nej31f90u0h3q.jpg" alt="landscape主页" title="初始博客主页"><br> 很激动对吧！别着急，个人搭建的博客可玩性可不仅如此呢，接下来简单介绍如何在新建文章。</p>
-<p>####（4）新建文章<br> windows环境下推荐直接将写好的文章放在blog/source/_post路径下：</p>
+<h4 id="（4）新建文章"><a href="#（4）新建文章" class="headerlink" title="（4）新建文章"></a>（4）新建文章</h4><p> windows环境下推荐直接将写好的文章放在blog/source/_post路径下：</p>
 <p> <img src="http://tva1.sinaimg.cn/large/007X8olVly1g76e6qf371j30b005ot8p.jpg" alt="新建文章" title="新建一篇博客"><br>当然也可以像macOS或Linux下使用命令行新建文章，然后进行编辑：</p>
 <pre><code>hexo n &quot;新建的文章&quot;</code></pre><p>博客一般使用markdown格式（.md），非常方便的一种格式，网上有很多介绍，大家可以学习一下。</p>
-<p>####（5）更新博客<br>对博客内容、主题进行修改后，比如刚才新建了一篇文章，需要将修改更新。<br>一般需要在blog目录下按顺序进行清理（clean）、生成（generate）、启动（sever/start）操作：</p>
+<h4 id="（5）更新博客"><a href="#（5）更新博客" class="headerlink" title="（5）更新博客"></a>（5）更新博客</h4><p>对博客内容、主题进行修改后，比如刚才新建了一篇文章，需要将修改更新。<br>一般需要在blog目录下按顺序进行清理（clean）、生成（generate）、启动（sever/start）操作：</p>
 <pre><code>hexo clean
 hexo g
 hexo s</code></pre><p>至此我们就完成了个人博客的创建，以及如何对博客进行修改等操作。不过我们的博客现在只能通过本地端口（localhost）访问调试，怎么才能让别人看到我们的博客呢？</p>
 <p>接下来就来介绍如何将博客部署到github上进行访问。</p>
-<p>###3、将博客部署到github上</p>
-<p>####（1）在github上新建仓库<br>仓库名称必须为 xxx.github.io(其中xxx为自己的github用户名)，如codesong99.github.io,并得到仓库地址：<br><img src="http://tva1.sinaimg.cn/large/007X8olVly1g76ex5em5uj30ye09xjs2.jpg" alt="github仓库地址" title="github仓库地址"></p>
-<p>####（2）在blog目录下安装一个git的部署插件</p>
-<pre><code>cnpm install --save hexo-deployer-git</code></pre><p>####（3）修改blog目录下的配置文件<br>打开blog目录下的_config.yml文件，在最后几行的部署（deploy）信息位置添加以下配置：<br><img src="http://tva1.sinaimg.cn/large/007X8olVly1g76f1wqqoaj30jc04ugll.jpg" alt="deploy配置" title="deploy配置"><br>部署类型为git，仓库地址为刚才获得的github仓库地址，branch设置为master，修改完成后保存并关闭。<br>注意冒号后有一个空格。</p>
-<p>####（4）将博客部署远端<br>回到CMD窗口，在blog目录下输入一下命令，将博客推到远端：</p>
+<h3 id="3、将博客部署到github上"><a href="#3、将博客部署到github上" class="headerlink" title="3、将博客部署到github上"></a>3、将博客部署到github上</h3><h4 id="（1）在github上新建仓库"><a href="#（1）在github上新建仓库" class="headerlink" title="（1）在github上新建仓库"></a>（1）在github上新建仓库</h4><p>仓库名称必须为 xxx.github.io(其中xxx为自己的github用户名)，如codesong99.github.io,并得到仓库地址：<br><img src="http://tva1.sinaimg.cn/large/007X8olVly1g76ex5em5uj30ye09xjs2.jpg" alt="github仓库地址" title="github仓库地址"></p>
+<h4 id="2）在blog目录下安装一个git的部署插件"><a href="#2）在blog目录下安装一个git的部署插件" class="headerlink" title="2）在blog目录下安装一个git的部署插件"></a>2）在blog目录下安装一个git的部署插件</h4><pre><code>cnpm install --save hexo-deployer-git</code></pre><h4 id="3）修改blog目录下的配置文件"><a href="#3）修改blog目录下的配置文件" class="headerlink" title="3）修改blog目录下的配置文件"></a>3）修改blog目录下的配置文件</h4><p>打开blog目录下的_config.yml文件，在最后几行的部署（deploy）信息位置添加以下配置：<br><img src="http://tva1.sinaimg.cn/large/007X8olVly1g76f1wqqoaj30jc04ugll.jpg" alt="deploy配置" title="deploy配置"><br>部署类型为git，仓库地址为刚才获得的github仓库地址，branch设置为master，修改完成后保存并关闭。<br>注意冒号后有一个空格。</p>
+<h4 id="（4）将博客部署远端"><a href="#（4）将博客部署远端" class="headerlink" title="（4）将博客部署远端"></a>（4）将博客部署远端</h4><p>回到CMD窗口，在blog目录下输入一下命令，将博客推到远端：</p>
 <pre><code>hexo d</code></pre><p>这个”d”就是deploy的意思。此过程需要输入github账号及密码。</p>
 <p>至此我们就完成了搭建hexo博客并部署到github上的所有工作，在浏览器中输入xxx.github.io即可访问自己的个人博客。</p>
-<p>###4、One More Thing<br>虽然我们已经完成了个人博客的搭建，并部署到github上进行访问，但默认的landscape主题、xxxxxxx.github.io的地址是不是感觉跟真正的博客还有些不同？<br>上文中已经简单提到，我们可以自己修改个人博客的主题（将博客主题放在theme路径下），具体实现就要考验大家的审美和动手能力了，网上也有很多优秀的修改方法、模板，本文不再介绍。<br>接下来我将简单介绍如何设置自己的域名来访问博客。</p>
-<p>####绑定域名</p>
-<p>github支持绑定域名，在仓库的settings-&gt;options-&gt;Custom domain出可以绑定自己注册的域名，如codesong.cn<br><img src="http://tva1.sinaimg.cn/large/007X8olVly1g76fj49qunj30qo0g8dg7.jpg" alt="github绑定域名" title="github绑定域名"></p>
-<p>然后ping一下自己github仓库的ip：<br><img src="http://tva1.sinaimg.cn/large/007X8olVly1g76fvakvl8j30jc0830t9.jpg" alt="ping" title="ping"></p>
+<h3 id="4、One-More-Thing"><a href="#4、One-More-Thing" class="headerlink" title="4、One More Thing"></a>4、One More Thing</h3><p>虽然我们已经完成了个人博客的搭建，并部署到github上进行访问，但默认的landscape主题、xxxxxxx.github.io的地址是不是感觉跟真正的博客还有些不同？<br>上文中已经简单提到，我们可以自己修改个人博客的主题（将博客主题放在theme路径下），具体实现就要考验大家的审美和动手能力了，网上也有很多优秀的修改方法、模板，本文不再介绍。<br>接下来我将简单介绍如何设置自己的域名来访问博客。</p>
+<h4 id="绑定域名"><a href="#绑定域名" class="headerlink" title="绑定域名"></a>绑定域名</h4><p>github支持绑定域名，来访问我们的博客。只需在github上绑定域名，并将域名解析到github仓库即可。具体需要以下三个步骤：</p>
+<p>首先在github博客仓库中新建一个”CNAME”的文件，文件内容为自己注册的域名（可在阿里云、腾讯云购买域名，暂不需要购买服务器），如“codesong.cn”：<br><img src="http://tva1.sinaimg.cn/large/007X8olVly1g76y11uxy2j30s9093gm9.jpg" alt="CNAME"><br>这样我们在仓库的settings-&gt;options-&gt;Custom domain界面就能看到自己绑定的域名啦：<br><img src="http://tva1.sinaimg.cn/large/007X8olVly1g76fj49qunj30qo0g8dg7.jpg" alt="github绑定域名" title="github绑定域名"></p>
+<p>第二步，ping一下自己github仓库的ip：<br><img src="http://tva1.sinaimg.cn/large/007X8olVly1g76fvakvl8j30jc0830t9.jpg" alt="ping" title="ping"></p>
 <p>最后将自己的域名解析中添加www、@两条A型记录，其中“记录值”为刚才ping到的github仓库ip<br><img src="http://tva1.sinaimg.cn/large/007X8olVly1g76fovvlo3j317g09hjs1.jpg" alt="域名解析" title="添加域名解析"></p>
 <p>这样，我们就可以同时通过 用户名.github.io 和自己注册的域名来访问个人博客了。</p>
 <p>以上就是本文的全部内容了，希望大家早日熟练hexo clean 、hexo g 、hexo d 三连~</p>
@@ -463,7 +458,7 @@ hexo s</code></pre><p>至此我们就完成了个人博客的创建，以及如�
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-21T02:26:22.191Z">2019-09-21</time></div>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-21T02:54:26.737Z">2019-09-21</time></div>
                     <a href="/2019/09/21/hexo搭建个人博客/" class="title has-link-black-ter is-size-6 has-text-weight-normal">hexo：从零开始搭建个人博客</a>
                     <p class="is-size-7 is-uppercase">
                         
@@ -560,7 +555,7 @@ hexo s</code></pre><p>至此我们就完成了个人博客的创建，以及如�
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-21T02:26:22.191Z">2019-09-21</time></div>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-21T02:54:26.737Z">2019-09-21</time></div>
                     <a href="/2019/09/21/hexo搭建个人博客/" class="title has-link-black-ter is-size-6 has-text-weight-normal">hexo：从零开始搭建个人博客</a>
                     <p class="is-size-7 is-uppercase">
                         
