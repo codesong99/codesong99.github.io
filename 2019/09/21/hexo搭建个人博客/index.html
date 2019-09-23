@@ -25,7 +25,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Gemini',
+    scheme: 'Pisces',
     version: '7.4.0',
     exturl: false,
     sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
@@ -55,12 +55,12 @@
   };
 </script>
 
-  <meta name="description" content="博客是传递、分享技术的一种高效途径，如果你不满足于github、CSND、简书等方式，还可以搭建自己的个人博客，使用hexo搭建个人博客是一种便捷有效的方式。本文介绍一种搭建个人博客的方法。通过hexo搭建个人博客，部署到github上；另外介绍如何使用github的域名绑定功能，给个人博客设置域名。 工具及平台：工具：hexo、git、Node.js、npm/cnpm平台：Linux、macOS">
+  <meta name="description" content="博客是传递、分享技术的一种高效途径，如果你不满足于github、CSND、简书等方式，还可以搭建自己的个人博客，使用hexo搭建个人博客是一种便捷有效的方式。本文介绍一种搭建个人博客的方法。通过hexo搭建个人博客，部署到github上；另外介绍如何使用github的域名绑定功能，给个人博客设置域名。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hexo：从零开始搭建个人博客">
 <meta property="og:url" content="http://yoursite.com/2019/09/21/hexo搭建个人博客/index.html">
 <meta property="og:site_name" content="Code Song">
-<meta property="og:description" content="博客是传递、分享技术的一种高效途径，如果你不满足于github、CSND、简书等方式，还可以搭建自己的个人博客，使用hexo搭建个人博客是一种便捷有效的方式。本文介绍一种搭建个人博客的方法。通过hexo搭建个人博客，部署到github上；另外介绍如何使用github的域名绑定功能，给个人博客设置域名。 工具及平台：工具：hexo、git、Node.js、npm/cnpm平台：Linux、macOS">
+<meta property="og:description" content="博客是传递、分享技术的一种高效途径，如果你不满足于github、CSND、简书等方式，还可以搭建自己的个人博客，使用hexo搭建个人博客是一种便捷有效的方式。本文介绍一种搭建个人博客的方法。通过hexo搭建个人博客，部署到github上；另外介绍如何使用github的域名绑定功能，给个人博客设置域名。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://tva1.sinaimg.cn/large/007X8olVly1g76bkdvpyjj30qw0dzjrt.jpg">
 <meta property="og:image" content="http://tva1.sinaimg.cn/large/007X8olVly1g76dtywadfj30lx0aq3z0.jpg">
@@ -76,7 +76,7 @@
 <meta property="og:updated_time" content="2019-09-21T02:53:16.622Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo：从零开始搭建个人博客">
-<meta name="twitter:description" content="博客是传递、分享技术的一种高效途径，如果你不满足于github、CSND、简书等方式，还可以搭建自己的个人博客，使用hexo搭建个人博客是一种便捷有效的方式。本文介绍一种搭建个人博客的方法。通过hexo搭建个人博客，部署到github上；另外介绍如何使用github的域名绑定功能，给个人博客设置域名。 工具及平台：工具：hexo、git、Node.js、npm/cnpm平台：Linux、macOS">
+<meta name="twitter:description" content="博客是传递、分享技术的一种高效途径，如果你不满足于github、CSND、简书等方式，还可以搭建自己的个人博客，使用hexo搭建个人博客是一种便捷有效的方式。本文介绍一种搭建个人博客的方法。通过hexo搭建个人博客，部署到github上；另外介绍如何使用github的域名绑定功能，给个人博客设置域名。">
 <meta name="twitter:image" content="http://tva1.sinaimg.cn/large/007X8olVly1g76bkdvpyjj30qw0dzjrt.jpg">
   <link rel="canonical" href="http://yoursite.com/2019/09/21/hexo搭建个人博客/">
 
@@ -254,7 +254,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>博客是传递、分享技术的一种高效途径，如果你不满足于github、CSND、简书等方式，还可以搭建自己的个人博客，使用hexo搭建个人博客是一种便捷有效的方式。<br>本文介绍一种搭建个人博客的方法。<strong>通过hexo搭建个人博客，部署到github上</strong>；另外介绍如何使用github的域名绑定功能，给个人博客设置域名。</p>
+        <p>博客是传递、分享技术的一种高效途径，如果你不满足于github、CSND、简书等方式，还可以搭建自己的个人博客，使用hexo搭建个人博客是一种便捷有效的方式。<br>本文介绍一种搭建个人博客的方法。<strong>通过hexo搭建个人博客，部署到github上</strong>；另外介绍如何使用github的域名绑定功能，给个人博客设置域名。</p><a id="more"></a>
 <h2 id="工具及平台："><a href="#工具及平台：" class="headerlink" title="工具及平台："></a>工具及平台：</h2><p>工具：hexo、git、Node.js、npm/cnpm<br>平台：Linux、macOS、Windows等<br>不同系统操作基本相同，本文以win10为例进行演示。<br>（windows环境需已安装git并配置为环境变量）</p>
 <h2 id="搭建过程："><a href="#搭建过程：" class="headerlink" title="搭建过程："></a>搭建过程：</h2><h3 id="1、安装hexo"><a href="#1、安装hexo" class="headerlink" title="1、安装hexo"></a>1、安装hexo</h3><h4 id="（1）安装Node-js"><a href="#（1）安装Node-js" class="headerlink" title="（1）安装Node.js"></a>（1）安装Node.js</h4><p>Node.js是一个基于Chrome V8引擎的JavaScript运行环境，能够是js运行在服务端。安装方法非常简单：<br>nodejs.org下载安装即可。推荐下载LTS（Long Time Support）版本<br><img src="http://tva1.sinaimg.cn/large/007X8olVly1g76bkdvpyjj30qw0dzjrt.jpg" alt="下载安装Node.js" title="下载安装Node.js"></p>
 <h4 id="（2）安装NPM"><a href="#（2）安装NPM" class="headerlink" title="（2）安装NPM"></a>（2）安装NPM</h4><p>NPM（Node Package Manager）是基于Node.js的包管理工具，方便开发人员分享和获取第三方包并使用。<br>由于NPM镜像是国外资源，安装十分缓慢，因此我们选择安装淘宝团队做的镜像cnpm。在win10环境下，以管理员身份运行CMD，输入以下命令：</p>
@@ -411,7 +411,7 @@ hexo s</code></pre><p>至此我们就完成了个人博客的创建，以及如�
 </div>
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.0</div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.4.0</div>
 
         
 
@@ -439,7 +439,6 @@ hexo s</code></pre><p>至此我们就完成了个人博客的创建，以及如�
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 <script src="/js/utils.js?v=7.4.0"></script><script src="/js/motion.js?v=7.4.0"></script>
 <script src="/js/schemes/pisces.js?v=7.4.0"></script>
-
 <script src="/js/next-boot.js?v=7.4.0"></script>
 
 
