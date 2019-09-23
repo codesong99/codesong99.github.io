@@ -4,63 +4,116 @@
 
 
 
-<html lang="zh-CN">
-<head>
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.9.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.0">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.0">
-  <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#222">
-
-<link rel="stylesheet" href="/css/main.css?v=7.4.0">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
 
 
-<script id="hexo-configurations">
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.3.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
     scheme: 'Muse',
-    version: '7.4.0',
-    exturl: false,
-    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
-    copycode: {"enable":false,"show_result":false,"style":null},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
-    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    version: '6.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: false,
-    mediumzoom: false,
+    fastclick: false,
     lazyload: false,
-    pangu: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
-      appID: '',
+      applicationID: '',
       apiKey: '',
       indexName: '',
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    },
-    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
-    path: '',
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    translation: {
-      copy_button: '复制',
-      copy_success: '复制成功',
-      copy_failure: '复制失败'
-    },
-    sidebarPadding: 40
+    }
   };
 </script>
 
-  <meta name="description" content="博客是传递、分享技术的一种高效途径，如果你不满足于github、CSND、简书等方式，还可以搭建自己的个人博客，使用hexo搭建个人博客是一种便捷有效的方式。本文介绍一种搭建个人博客的方法。通过hexo搭建个人博客，部署到github上；另外介绍如何使用github的域名绑定功能，给个人博客设置域名。">
+
+  
+
+
+
+
+  <meta name="description" content="博客是传递、分享技术的一种高效途径，如果你不满足于github、CSND、简书等方式，还可以搭建自己的个人博客，使用hexo搭建个人博客是一种便捷有效的方式。本文介绍一种搭建个人博客的方法。通过hexo搭建个人博客，部署到github上；另外介绍如何使用github的域名绑定功能，给个人博客设置域名。 工具及平台：工具：hexo、git、Node.js、npm/cnpm平台：Linux、macOS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hexo：从零开始搭建个人博客">
 <meta property="og:url" content="http://yoursite.com/2019/09/21/hexo搭建个人博客/index.html">
 <meta property="og:site_name" content="Code Song">
-<meta property="og:description" content="博客是传递、分享技术的一种高效途径，如果你不满足于github、CSND、简书等方式，还可以搭建自己的个人博客，使用hexo搭建个人博客是一种便捷有效的方式。本文介绍一种搭建个人博客的方法。通过hexo搭建个人博客，部署到github上；另外介绍如何使用github的域名绑定功能，给个人博客设置域名。">
+<meta property="og:description" content="博客是传递、分享技术的一种高效途径，如果你不满足于github、CSND、简书等方式，还可以搭建自己的个人博客，使用hexo搭建个人博客是一种便捷有效的方式。本文介绍一种搭建个人博客的方法。通过hexo搭建个人博客，部署到github上；另外介绍如何使用github的域名绑定功能，给个人博客设置域名。 工具及平台：工具：hexo、git、Node.js、npm/cnpm平台：Linux、macOS">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://tva1.sinaimg.cn/large/007X8olVly1g76bkdvpyjj30qw0dzjrt.jpg">
 <meta property="og:image" content="http://tva1.sinaimg.cn/large/007X8olVly1g76dtywadfj30lx0aq3z0.jpg">
@@ -76,19 +129,21 @@
 <meta property="og:updated_time" content="2019-09-21T02:53:16.622Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo：从零开始搭建个人博客">
-<meta name="twitter:description" content="博客是传递、分享技术的一种高效途径，如果你不满足于github、CSND、简书等方式，还可以搭建自己的个人博客，使用hexo搭建个人博客是一种便捷有效的方式。本文介绍一种搭建个人博客的方法。通过hexo搭建个人博客，部署到github上；另外介绍如何使用github的域名绑定功能，给个人博客设置域名。">
+<meta name="twitter:description" content="博客是传递、分享技术的一种高效途径，如果你不满足于github、CSND、简书等方式，还可以搭建自己的个人博客，使用hexo搭建个人博客是一种便捷有效的方式。本文介绍一种搭建个人博客的方法。通过hexo搭建个人博客，部署到github上；另外介绍如何使用github的域名绑定功能，给个人博客设置域名。 工具及平台：工具：hexo、git、Node.js、npm/cnpm平台：Linux、macOS">
 <meta name="twitter:image" content="http://tva1.sinaimg.cn/large/007X8olVly1g76bkdvpyjj30qw0dzjrt.jpg">
+
+
+
+
+
+
   <link rel="canonical" href="http://yoursite.com/2019/09/21/hexo搭建个人博客/">
 
 
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
+
+<script type="text/javascript" id="page.configurations">
   CONFIG.page = {
     sidebar: "",
-    isHome: false,
-    isPost: true,
-    isPage: false,
-    isArchive: false
   };
 </script>
 
@@ -102,47 +157,59 @@
 
 
 
+
   <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
 
-  .use-motion .logo,
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
 
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
   </style>
 </noscript>
 
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
-  <div class="container use-motion">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-meta">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
 
-    <div>
+    <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Code Song</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
+    
   </div>
 
   <div class="site-nav-toggle">
@@ -155,98 +222,146 @@
 </div>
 
 
+
 <nav class="site-nav">
   
-  <ul id="menu" class="menu">
-      
-      
+    <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-      
-    
-
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
-
-  </li>
-      
-      
-      
         
-        <li class="menu-item menu-item-archives">
-      
-    
-
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
-
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
   </li>
-  </ul>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+  </li>
 
+      
+      
+    </ul>
+  
+
+  
     
 
+  
+
+  
 </nav>
+
+
+
+  
+
+
+
 </div>
     </header>
 
     
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
 
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
           <div id="content" class="content">
             
 
   <div id="posts" class="posts-expand">
-      <article itemscope itemtype="http://schema.org/Article">
+    
+
+  
+
   
   
   
-  <div class="post-block post">
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/21/hexo搭建个人博客/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jacob Song">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Code Song">
     </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">hexo：从零开始搭建个人博客
 
-          
-        </h1>
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">hexo：从零开始搭建个人博客
+              
+            
+          </h1>
+        
 
         <div class="post-meta">
-            <span class="post-meta-item">
+          <span class="post-time">
+
+            
+            
+            
+
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
 
               
                 
               
 
               <time title="创建时间：2019-09-21 10:54:26 / 修改时间：10:53:16" itemprop="dateCreated datePublished" datetime="2019-09-21T10:54:26+08:00">2019-09-21</time>
-            </span>
-          
             
 
             
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
           
 
           
 
         </div>
       </header>
+    
 
     
     
@@ -254,7 +369,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>博客是传递、分享技术的一种高效途径，如果你不满足于github、CSND、简书等方式，还可以搭建自己的个人博客，使用hexo搭建个人博客是一种便捷有效的方式。<br>本文介绍一种搭建个人博客的方法。<strong>通过hexo搭建个人博客，部署到github上</strong>；另外介绍如何使用github的域名绑定功能，给个人博客设置域名。</p><a id="more"></a>
+      
+
+      
+        <p>博客是传递、分享技术的一种高效途径，如果你不满足于github、CSND、简书等方式，还可以搭建自己的个人博客，使用hexo搭建个人博客是一种便捷有效的方式。<br>本文介绍一种搭建个人博客的方法。<strong>通过hexo搭建个人博客，部署到github上</strong>；另外介绍如何使用github的域名绑定功能，给个人博客设置域名。</p>
 <h2 id="工具及平台："><a href="#工具及平台：" class="headerlink" title="工具及平台："></a>工具及平台：</h2><p>工具：hexo、git、Node.js、npm/cnpm<br>平台：Linux、macOS、Windows等<br>不同系统操作基本相同，本文以win10为例进行演示。<br>（windows环境需已安装git并配置为环境变量）</p>
 <h2 id="搭建过程："><a href="#搭建过程：" class="headerlink" title="搭建过程："></a>搭建过程：</h2><h3 id="1、安装hexo"><a href="#1、安装hexo" class="headerlink" title="1、安装hexo"></a>1、安装hexo</h3><h4 id="（1）安装Node-js"><a href="#（1）安装Node-js" class="headerlink" title="（1）安装Node.js"></a>（1）安装Node.js</h4><p>Node.js是一个基于Chrome V8引擎的JavaScript运行环境，能够是js运行在服务端。安装方法非常简单：<br>nodejs.org下载安装即可。推荐下载LTS（Long Time Support）版本<br><img src="http://tva1.sinaimg.cn/large/007X8olVly1g76bkdvpyjj30qw0dzjrt.jpg" alt="下载安装Node.js" title="下载安装Node.js"></p>
 <h4 id="（2）安装NPM"><a href="#（2）安装NPM" class="headerlink" title="（2）安装NPM"></a>（2）安装NPM</h4><p>NPM（Node Package Manager）是基于Node.js的包管理工具，方便开发人员分享和获取第三方包并使用。<br>由于NPM镜像是国外资源，安装十分缓慢，因此我们选择安装淘宝团队做的镜像cnpm。在win10环境下，以管理员身份运行CMD，输入以下命令：</p>
@@ -291,53 +409,76 @@ hexo s</code></pre><p>至此我们就完成了个人博客的创建，以及如�
 <p>这样，我们就可以同时通过 用户名.github.io 和自己注册的域名来访问个人博客了。</p>
 <p>以上就是本文的全部内容了，希望大家早日熟练hexo clean 、hexo g 、hexo d 三连~</p>
 
+      
     </div>
 
     
+
     
     
-        
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
       
 
-      <footer class="post-footer">
+      
+      
+      
 
-        
-
-          <div class="post-nav">
-            <div class="post-nav-next post-nav-item">
-              
-                <a href="/2019/09/20/hello-world/" rel="next" title="Hello World">
-                  <i class="fa fa-chevron-left"></i> Hello World
-                </a>
-              
-            </div>
-
-            <span class="post-nav-divider"></span>
-
-            <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2019/09/22/搜索测试/" rel="prev" title="">
-                   <i class="fa fa-chevron-right"></i>
-                </a>
-              
-            </div>
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/20/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
           </div>
-        
-      </footer>
-    
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/22/搜索测试/" rel="prev" title>
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
   </article>
 
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
           </div>
           
 
+  
+
+
+
         </div>
+        
           
   
   <div class="sidebar-toggle">
@@ -348,56 +489,93 @@ hexo s</code></pre><p>至此我们就完成了个人博客的创建，以及如�
     </div>
   </div>
 
-  <aside class="sidebar">
+  <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
-        
-        
-        
-        
+
       
 
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Jacob Song</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
       <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#工具及平台："><span class="nav-number">1.</span> <span class="nav-text">工具及平台：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#搭建过程："><span class="nav-number">2.</span> <span class="nav-text">搭建过程：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、安装hexo"><span class="nav-number">2.1.</span> <span class="nav-text">1、安装hexo</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#（1）安装Node-js"><span class="nav-number">2.1.1.</span> <span class="nav-text">（1）安装Node.js</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（2）安装NPM"><span class="nav-number">2.1.2.</span> <span class="nav-text">（2）安装NPM</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（3）安装hexo"><span class="nav-number">2.1.3.</span> <span class="nav-text">（3）安装hexo</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、使用hexo搭建博客"><span class="nav-number">2.2.</span> <span class="nav-text">2、使用hexo搭建博客</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#（1）创建工作路径"><span class="nav-number">2.2.1.</span> <span class="nav-text">（1）创建工作路径</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（2）初始化博客"><span class="nav-number">2.2.2.</span> <span class="nav-text">（2）初始化博客</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（3）启动、生成博客"><span class="nav-number">2.2.3.</span> <span class="nav-text">（3）启动、生成博客</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（4）新建文章"><span class="nav-number">2.2.4.</span> <span class="nav-text">（4）新建文章</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（5）更新博客"><span class="nav-number">2.2.5.</span> <span class="nav-text">（5）更新博客</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、将博客部署到github上"><span class="nav-number">2.3.</span> <span class="nav-text">3、将博客部署到github上</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#（1）在github上新建仓库"><span class="nav-number">2.3.1.</span> <span class="nav-text">（1）在github上新建仓库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2）在blog目录下安装一个git的部署插件"><span class="nav-number">2.3.2.</span> <span class="nav-text">2）在blog目录下安装一个git的部署插件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3）修改blog目录下的配置文件"><span class="nav-number">2.3.3.</span> <span class="nav-text">3）修改blog目录下的配置文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（4）将博客部署远端"><span class="nav-number">2.3.4.</span> <span class="nav-text">（4）将博客部署远端</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、One-More-Thing"><span class="nav-number">2.4.</span> <span class="nav-text">4、One More Thing</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#绑定域名"><span class="nav-number">2.4.1.</span> <span class="nav-text">绑定域名</span></a></li></ol></li></ol></li></ol></div>
-        
-      </div>
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#工具及平台："><span class="nav-number">1.</span> <span class="nav-text">工具及平台：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#搭建过程："><span class="nav-number">2.</span> <span class="nav-text">搭建过程：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、安装hexo"><span class="nav-number">2.1.</span> <span class="nav-text">1、安装hexo</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#（1）安装Node-js"><span class="nav-number">2.1.1.</span> <span class="nav-text">（1）安装Node.js</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（2）安装NPM"><span class="nav-number">2.1.2.</span> <span class="nav-text">（2）安装NPM</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（3）安装hexo"><span class="nav-number">2.1.3.</span> <span class="nav-text">（3）安装hexo</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、使用hexo搭建博客"><span class="nav-number">2.2.</span> <span class="nav-text">2、使用hexo搭建博客</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#（1）创建工作路径"><span class="nav-number">2.2.1.</span> <span class="nav-text">（1）创建工作路径</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（2）初始化博客"><span class="nav-number">2.2.2.</span> <span class="nav-text">（2）初始化博客</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（3）启动、生成博客"><span class="nav-number">2.2.3.</span> <span class="nav-text">（3）启动、生成博客</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（4）新建文章"><span class="nav-number">2.2.4.</span> <span class="nav-text">（4）新建文章</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（5）更新博客"><span class="nav-number">2.2.5.</span> <span class="nav-text">（5）更新博客</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、将博客部署到github上"><span class="nav-number">2.3.</span> <span class="nav-text">3、将博客部署到github上</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#（1）在github上新建仓库"><span class="nav-number">2.3.1.</span> <span class="nav-text">（1）在github上新建仓库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2）在blog目录下安装一个git的部署插件"><span class="nav-number">2.3.2.</span> <span class="nav-text">2）在blog目录下安装一个git的部署插件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3）修改blog目录下的配置文件"><span class="nav-number">2.3.3.</span> <span class="nav-text">3）修改blog目录下的配置文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（4）将博客部署远端"><span class="nav-number">2.3.4.</span> <span class="nav-text">（4）将博客部署远端</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、One-More-Thing"><span class="nav-number">2.4.</span> <span class="nav-text">4、One More Thing</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#绑定域名"><span class="nav-number">2.4.1.</span> <span class="nav-text">绑定域名</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
       <!--/noindex-->
+      
 
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">Jacob Song</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-  <nav class="site-state motion-element">
-      <div class="site-state-item site-state-posts">
-        
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">3</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-    
-  </nav>
-
-
-
-      </div>
+      
 
     </div>
   </aside>
-  <div id="sidebar-dimmer"></div>
 
 
+        
       </div>
     </main>
 
@@ -408,16 +586,29 @@ hexo s</code></pre><p>至此我们就完成了个人博客的创建，以及如�
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Jacob Song</span>
+
+  
+
+  
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.9.0</div>
+
+
+
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.4.0</div>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a> v6.3.0</div>
+
+
+
 
         
-
-
-
-
 
 
 
@@ -429,17 +620,105 @@ hexo s</code></pre><p>至此我们就完成了个人博客的创建，以及如�
         
       </div>
     </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
   </div>
 
   
 
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
 
-  <script src="/lib/anime.min.js?v=3.1.0"></script>
-  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-<script src="/js/utils.js?v=7.4.0"></script><script src="/js/motion.js?v=7.4.0"></script>
-<script src="/js/schemes/muse.js?v=7.4.0"></script>
-<script src="/js/next-boot.js?v=7.4.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
 
 
 
@@ -454,16 +733,26 @@ hexo s</code></pre><p>至此我们就完成了个人博客的创建，以及如�
 
 
 
+  
 
 
 
 
 
+  
 
+  
 
+  
 
+  
 
+  
+  
 
+  
+
+  
 
   
 
