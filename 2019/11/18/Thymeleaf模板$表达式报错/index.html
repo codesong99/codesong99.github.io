@@ -116,13 +116,13 @@
 <meta property="og:site_name" content="Code Song">
 <meta property="og:description" content="IDEA中使用Thymeleaf模板$表达式报错问题描述使用SpringBoot开发项目，在html文件中使用Thymeleaf模板，需要使用$表达式遍历输出数据，在IDEA中$表达式出现红色波浪线报错，且表达式未生效，页面无法正常显示。采用Spring MVC设计，controller层和HTML文件部分代码如下： controller层代码：@Controller public class H">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://s2.ax1x.com/2019/11/18/MyIAwF.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/11/19/Mc7EFO.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/11/18/Mybho8.png">
-<meta property="og:updated_time" content="2019-11-18T06:32:32.095Z">
+<meta property="og:updated_time" content="2019-11-19T01:28:26.463Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="IDEA中使用Thymeleaf模板$表达式报错">
 <meta name="twitter:description" content="IDEA中使用Thymeleaf模板$表达式报错问题描述使用SpringBoot开发项目，在html文件中使用Thymeleaf模板，需要使用$表达式遍历输出数据，在IDEA中$表达式出现红色波浪线报错，且表达式未生效，页面无法正常显示。采用Spring MVC设计，controller层和HTML文件部分代码如下： controller层代码：@Controller public class H">
-<meta name="twitter:image" content="https://s2.ax1x.com/2019/11/18/MyIAwF.png">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/11/19/Mc7EFO.png">
 
 
 
@@ -350,12 +350,24 @@
                 
               
 
-              <time title="创建时间：2019-11-18 14:33:21 / 修改时间：14:32:32" itemprop="dateCreated datePublished" datetime="2019-11-18T14:33:21+08:00">2019-11-18</time>
+              <time title="创建时间：2019-11-18 14:33:21" itemprop="dateCreated datePublished" datetime="2019-11-18T14:33:21+08:00">2019-11-18</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-11-19 09:28:26" itemprop="dateModified" datetime="2019-11-19T09:28:26+08:00">2019-11-19</time>
               
             
           </span>
@@ -430,7 +442,7 @@ public class HomeController {
         return &quot;/index&quot;;
     }
 }</code></pre><p>代码最后部分，在model中填充一个集合对象discussPosts</p>
-<h5 id="HTML代码："><a href="#HTML代码：" class="headerlink" title="HTML代码："></a>HTML代码：</h5><p><img src="https://s2.ax1x.com/2019/11/18/MyIAwF.png" alt="Thymeleaf模板$表达式报错" title="Thymeleaf模板$表达式报错"></p>
+<h5 id="HTML代码："><a href="#HTML代码：" class="headerlink" title="HTML代码："></a>HTML代码：</h5><p><img src="https://s2.ax1x.com/2019/11/19/Mc7EFO.png" alt="Thymeleaf模板$表达式报错" title="Thymeleaf模板$表达式报错"></p>
 <p>多处$表达式报错，且编译运行后，网页不能显示内容，模板解析发生错误。</p>
 <h4 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h4><p>虽然在后端的model中填充了对象的数据信息，但是程序并没有运行，因此，前端HTML文件无法感知到填充的model对象（鼠标放在红色波浪线处会提醒Cannot resolve…）。IDEA默认要对Thymeleaf的数据进行验证，所以会出现报错。<br>因此我们只需将IDEA的Thymeleaf数据验证关闭即可。</p>
 <h4 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h4><h5 id="关闭IDEA的Thymeleaf表达式数据验证（Expression-variables-validation）"><a href="#关闭IDEA的Thymeleaf表达式数据验证（Expression-variables-validation）" class="headerlink" title="关闭IDEA的Thymeleaf表达式数据验证（Expression variables validation）"></a>关闭IDEA的Thymeleaf表达式数据验证（Expression variables validation）</h5><p><img src="https://s2.ax1x.com/2019/11/18/Mybho8.png" alt="关闭Thymeleaf表达式数据验证" title="关闭Thymeleaf表达式数据验证"></p>
