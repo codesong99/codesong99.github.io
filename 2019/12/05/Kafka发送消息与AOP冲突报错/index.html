@@ -108,31 +108,31 @@
 
 
 
-  <meta name="description" content="本文介绍kafka的安装与使用，首先安装kafka，然后通过命令行演示kafka在生产者-消费者模式下的使用，最后介绍常见的退出错误。 kafka安装下载kafka在kafka官网下载http://kafka.apache.org/downloads，其中source download为带源码的版本，binary download为不带源码的版本。推荐下载不带源码的2.12版本。 下载后解压即可。">
-<meta name="keywords" content="kafka,zookeeper">
+  <meta name="description" content="最近在做项目时，在“发送系统通知”功能模块采用kafka作为消息中间件，使用生产者发送消息时出现空指针异常，后发现与日志记录功能（使用AOP织入）出现冲突，修改后解决问题，具体如下。 功能描述项目为一个类似于百度贴吧的社区项目，采用Spring Boot框架。在评论（comment）、点赞（like）、关注（follow）等高频使用的功能上采用了kafka消息队列，出现以上三种行为时，生产者（pr">
+<meta name="keywords" content="kafka,AOP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="kafka安装、测试与常见退出错误">
-<meta property="og:url" content="http://yoursite.com/2019/12/05/kafka安装、测试与常见退出错误/index.html">
+<meta property="og:title" content="Kafka发送消息与AOP冲突报错">
+<meta property="og:url" content="http://yoursite.com/2019/12/05/Kafka发送消息与AOP冲突报错/index.html">
 <meta property="og:site_name" content="Code Song">
-<meta property="og:description" content="本文介绍kafka的安装与使用，首先安装kafka，然后通过命令行演示kafka在生产者-消费者模式下的使用，最后介绍常见的退出错误。 kafka安装下载kafka在kafka官网下载http://kafka.apache.org/downloads，其中source download为带源码的版本，binary download为不带源码的版本。推荐下载不带源码的2.12版本。 下载后解压即可。">
+<meta property="og:description" content="最近在做项目时，在“发送系统通知”功能模块采用kafka作为消息中间件，使用生产者发送消息时出现空指针异常，后发现与日志记录功能（使用AOP织入）出现冲突，修改后解决问题，具体如下。 功能描述项目为一个类似于百度贴吧的社区项目，采用Spring Boot框架。在评论（comment）、点赞（like）、关注（follow）等高频使用的功能上采用了kafka消息队列，出现以上三种行为时，生产者（pr">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://s2.ax1x.com/2019/12/04/Q1qRQU.png">
-<meta property="og:image" content="https://s2.ax1x.com/2019/12/04/Q1LVmQ.png">
-<meta property="og:image" content="https://s2.ax1x.com/2019/12/04/Q1LGm4.png">
-<meta property="og:image" content="https://s2.ax1x.com/2019/12/04/Q1LTBQ.png">
-<meta property="og:image" content="https://s2.ax1x.com/2019/12/04/Q1OpB4.png">
-<meta property="og:updated_time" content="2019-12-05T15:32:20.455Z">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/05/QG2KiD.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/05/QG2aFS.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/05/QGRhAf.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/05/QGWhrR.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/05/QGfCi8.png">
+<meta property="og:updated_time" content="2019-12-05T15:31:46.960Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kafka安装、测试与常见退出错误">
-<meta name="twitter:description" content="本文介绍kafka的安装与使用，首先安装kafka，然后通过命令行演示kafka在生产者-消费者模式下的使用，最后介绍常见的退出错误。 kafka安装下载kafka在kafka官网下载http://kafka.apache.org/downloads，其中source download为带源码的版本，binary download为不带源码的版本。推荐下载不带源码的2.12版本。 下载后解压即可。">
-<meta name="twitter:image" content="https://s2.ax1x.com/2019/12/04/Q1qRQU.png">
+<meta name="twitter:title" content="Kafka发送消息与AOP冲突报错">
+<meta name="twitter:description" content="最近在做项目时，在“发送系统通知”功能模块采用kafka作为消息中间件，使用生产者发送消息时出现空指针异常，后发现与日志记录功能（使用AOP织入）出现冲突，修改后解决问题，具体如下。 功能描述项目为一个类似于百度贴吧的社区项目，采用Spring Boot框架。在评论（comment）、点赞（like）、关注（follow）等高频使用的功能上采用了kafka消息队列，出现以上三种行为时，生产者（pr">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/12/05/QG2KiD.png">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/12/05/kafka安装、测试与常见退出错误/">
+  <link rel="canonical" href="http://yoursite.com/2019/12/05/Kafka发送消息与AOP冲突报错/">
 
 
 
@@ -142,7 +142,7 @@
   };
 </script>
 
-  <title>kafka安装、测试与常见退出错误 | Code Song</title>
+  <title>Kafka发送消息与AOP冲突报错 | Code Song</title>
   
 
 
@@ -311,7 +311,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/05/kafka安装、测试与常见退出错误/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/05/Kafka发送消息与AOP冲突报错/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jacob Song">
@@ -328,7 +328,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">kafka安装、测试与常见退出错误
+          <h1 class="post-title" itemprop="name headline">Kafka发送消息与AOP冲突报错
               
             
           </h1>
@@ -353,7 +353,7 @@
                 
               
 
-              <time title="创建时间：2019-12-05 17:09:55 / 修改时间：23:32:20" itemprop="dateCreated datePublished" datetime="2019-12-05T17:09:55+08:00">2019-12-05</time>
+              <time title="创建时间：2019-12-05 23:32:43 / 修改时间：23:31:46" itemprop="dateCreated datePublished" datetime="2019-12-05T23:32:43+08:00">2019-12-05</time>
             
 
             
@@ -409,31 +409,20 @@
       
 
       
-        <p>本文介绍kafka的安装与使用，首先安装kafka，然后通过命令行演示kafka在生产者-消费者模式下的使用，最后介绍常见的退出错误。</p>
-<h2 id="kafka安装"><a href="#kafka安装" class="headerlink" title="kafka安装"></a>kafka安装</h2><h4 id="下载kafka"><a href="#下载kafka" class="headerlink" title="下载kafka"></a>下载kafka</h4><p>在kafka官网下载<a href="http://kafka.apache.org/downloads，其中source" target="_blank" rel="noopener">http://kafka.apache.org/downloads，其中source</a> download为带源码的版本，binary download为不带源码的版本。推荐下载不带源码的2.12版本。<br><img src="https://s2.ax1x.com/2019/12/04/Q1qRQU.png" alt="下载kafka" title="下载kafka"></p>
-<p>下载后解压即可。</p>
-<h4 id="配置kafka"><a href="#配置kafka" class="headerlink" title="配置kafka"></a>配置kafka</h4><p>主要配置两个文件：<br>a. config文件夹下的zookeeper.properties中，配置zookeeper数据存储位置：<br><img src="https://s2.ax1x.com/2019/12/04/Q1LVmQ.png" alt="zookeeper配置" title="zookeeper配置"></p>
-<p>b.config文件夹下的server.properties中，配置kafka日志文件存放位置：<br><img src="https://s2.ax1x.com/2019/12/04/Q1LGm4.png" alt="server配置" title="server配置"></p>
-<h2 id="kafka使用演示"><a href="#kafka使用演示" class="headerlink" title="kafka使用演示"></a>kafka使用演示</h2><p>此部分使用命令行，演示kafka在生产者-消费者模式下发送、接收消息。<br>kafka在Windows下的命令在 kafka_2.12-2.3.1\bin\windows 路径下</p>
-<h4 id="启动zookeeper"><a href="#启动zookeeper" class="headerlink" title="启动zookeeper"></a>启动zookeeper</h4><p>打开命令行，进入kafka路径下，输入以下命令启动zookeeper：</p>
-<pre><code>E:\kafka_2.12-2.3.1&gt;bin\windows\zookeeper-server-start.bat config\zookeeper.properties</code></pre><h4 id="启动kafka"><a href="#启动kafka" class="headerlink" title="启动kafka"></a>启动kafka</h4><p>新打开一个命令行窗口，进入kafka路径下，输入以下命令启动kafka：</p>
-<pre><code>E:\kafka_2.12-2.3.1&gt;bin\windows\kafka-server-start.bat config\server.properties</code></pre><p>此时进入上文配置文件设置的文件夹，可以看到zookeeper和kafka日志相应的文件。</p>
-<h4 id="创建生产者"><a href="#创建生产者" class="headerlink" title="创建生产者"></a>创建生产者</h4><p>kafka使用的发布-订阅模式，新打开一个命令行窗口，进入kafka路径下，新建一个主题：</p>
-<pre><code>E:\kafka_2.12-2.3.1\bin\windows&gt;kafka-topics.bat --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic test</code></pre><p>查看当前所有主题（只有一个test）：</p>
-<pre><code>E:\kafka_2.12-2.3.1\bin\windows&gt;kafka-topics.bat --list --bootstrap-server localhost:9092</code></pre><p>生产者发送消息队列：</p>
-<pre><code>E:\kafka_2.12-2.3.1\bin\windows&gt;kafka-console-producer.bat --broker-list localhost:9092 --topic test</code></pre><p>具体如下图：<br><img src="https://s2.ax1x.com/2019/12/04/Q1LTBQ.png" alt="生产者" title="生产者"></p>
-<h4 id="创建消费者"><a href="#创建消费者" class="headerlink" title="创建消费者"></a>创建消费者</h4><p>新打开一个命令行窗口，进入kafka路径下，输入以下命令启动kafka：</p>
-<pre><code>E:\kafka_2.12-2.3.1\bin\windows&gt;kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic test --from-beginning</code></pre><p>这样消费者就开始从消息队列接收生产者发送的消息：<br><img src="https://s2.ax1x.com/2019/12/04/Q1OpB4.png" alt="消费者" title="消费者"></p>
-<p>此时在生产者窗口继续发送消息，消费者可以相应接收到。</p>
-<h2 id="退出错误"><a href="#退出错误" class="headerlink" title="退出错误"></a>退出错误</h2><p>退出时应使用命令行关闭zookeeper和kafka，否则会出现异常：</p>
-<pre><code>bin\windows\zookeeper-server-stop.bat   //关闭zookeeper
-bin\windows\kafka-server-stop.bat       //关闭kafka</code></pre><ul>
-<li>如果忘记关闭zookeeper和kafka，当关闭命令行窗口时，就会强制关闭kafka，这种方式为暴力关闭，很可能会导致kafka无法完成对日志文件的解锁。<br>届时，再次启动kafka的时候，就会提示日志文件被锁，无法成功启动。</li>
-<li>针对这种情况可以如此处理：将kafka日志文件全部删除，再次启动即可。</li>
-<li>建议：不要暴力关闭kafka，通过命令行关闭kafka后再关闭命令行工具。</li>
-<li>在Linux上部署kafka后，一般采用后台运行的方式，会避免以上问题。</li>
-</ul>
-<p>以上就是kafka的安装与初步使用，实际应用时往往不会采用命令行的方式。更多命令可以参考kafka官方手册 <a href="http://kafka.apache.org/documentation" target="_blank" rel="noopener">http://kafka.apache.org/documentation</a></p>
+        <p>最近在做项目时，在“发送系统通知”功能模块采用<strong>kafka</strong>作为消息中间件，使用生产者发送消息时出现空指针异常，后发现与日志记录功能（使用<strong>AOP织入</strong>）出现冲突，修改后解决问题，具体如下。</p>
+<h2 id="功能描述"><a href="#功能描述" class="headerlink" title="功能描述"></a>功能描述</h2><p>项目为一个类似于百度贴吧的<strong>社区项目</strong>，采用Spring Boot框架。<br>在评论（comment）、点赞（like）、关注（follow）等高频使用的功能上采用了kafka消息队列，出现以上三种行为时，生产者（producer）会发送一个事件（event）到消息队列中。<br>触发事件后，生产者将消息以JSON串的格式发送到队列中。在评论、点赞等功能对应的controller加入生产者，部分代码如下：</p>
+<pre><code>// 触发评论事件
+Event event = new Event()
+        .setTopic(TOPIC_COMMENT)
+        .setUserId(hostHolder.getUser().getId())    //用户id
+        .setEntityType(comment.getEntityType())     //实体类型
+        .setEntityId(comment.getEntityId())         //实体id
+        .setData(&quot;postId&quot;, discussPostId);          //帖子id
+eventProducer.fireEvent(event);                     //发送系统通知</code></pre><h2 id="报错及原因"><a href="#报错及原因" class="headerlink" title="报错及原因"></a>报错及原因</h2><p>启动zookeeper、kafka后启动项目进行测试，在帖子下发表评论，访问数据库发现评论事件没有存在数据库中（<strong>没有加入消息队列</strong>），且控制台出现如下报错：<br><img src="https://s2.ax1x.com/2019/12/05/QG2KiD.png" alt="kafka报错1" title="kafka报错1"><br><img src="https://s2.ax1x.com/2019/12/05/QG2aFS.png" alt="kafka报错2" title="kafka报错2"></p>
+<p>点击错误信息，发现之前“统一记录日志”功能中，使用AOP织入了日志记录功能：<br><img src="https://s2.ax1x.com/2019/12/05/QGRhAf.png" alt="aop报错" title="aop报错"><br>空指针异常出现在attribute对象，attribute是与请求有关的对象，在加入生产者-消费者模型之前，AOP拦截的是service，而所有的service都是通过controller调用的。<br>加入消费者之后，<strong>消费者会调用评论、点赞等service</strong>，而不是controller调用了service，因此没有请求（request），此时attribute对象为空，导致报错。</p>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>在记录日志功能的AOP出现异常的地方，判断当前对象是否为空，如果为空（消费者调用而不是controller调用）就返回<br><img src="https://s2.ax1x.com/2019/12/05/QGWhrR.png" alt="aop报错处理" title="aop报错处理"></p>
+<p>重新启动项目进行测试，发现数据库中已经能查询到评论、点赞、关注等操作触发的消息事件，说明使用生产者-消费者模式<strong>统一发送通知</strong>功能已经正确实现，问题解决。<br><img src="https://s2.ax1x.com/2019/12/05/QGfCi8.png" alt="消息事件" title="消息事件"></p>
+<p>因此，在写代码时要多考虑业务的逻辑，思考会不会出现为空的情况。</p>
 
       
     </div>
@@ -456,7 +445,7 @@ bin\windows\kafka-server-stop.bat       //关闭kafka</code></pre><ul>
           
             <a href="/tags/kafka/" rel="tag"># kafka</a>
           
-            <a href="/tags/zookeeper/" rel="tag"># zookeeper</a>
+            <a href="/tags/AOP/" rel="tag"># AOP</a>
           
         </div>
       
@@ -469,8 +458,8 @@ bin\windows\kafka-server-stop.bat       //关闭kafka</code></pre><ul>
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/11/24/Cookie和Session的选择/" rel="next" title="Cookie和Session的选择">
-                <i class="fa fa-chevron-left"></i> Cookie和Session的选择
+              <a href="/2019/12/05/kafka安装、测试与常见退出错误/" rel="next" title="kafka安装、测试与常见退出错误">
+                <i class="fa fa-chevron-left"></i> kafka安装、测试与常见退出错误
               </a>
             
           </div>
@@ -478,10 +467,6 @@ bin\windows\kafka-server-stop.bat       //关闭kafka</code></pre><ul>
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/12/05/Kafka发送消息与AOP冲突报错/" rel="prev" title="Kafka发送消息与AOP冲突报错">
-                Kafka发送消息与AOP冲突报错 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -651,7 +636,7 @@ bin\windows\kafka-server-stop.bat       //关闭kafka</code></pre><ul>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#kafka安装"><span class="nav-text">kafka安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#下载kafka"><span class="nav-text">下载kafka</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置kafka"><span class="nav-text">配置kafka</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#kafka使用演示"><span class="nav-text">kafka使用演示</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#启动zookeeper"><span class="nav-text">启动zookeeper</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#启动kafka"><span class="nav-text">启动kafka</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建生产者"><span class="nav-text">创建生产者</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建消费者"><span class="nav-text">创建消费者</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#退出错误"><span class="nav-text">退出错误</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#功能描述"><span class="nav-text">功能描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#报错及原因"><span class="nav-text">报错及原因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决方法"><span class="nav-text">解决方法</span></a></li></ol></div>
             
 
           </div>
