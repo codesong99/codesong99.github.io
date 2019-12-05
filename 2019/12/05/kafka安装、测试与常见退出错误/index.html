@@ -108,23 +108,23 @@
 
 
 
-  <meta name="description" content="本文介绍kafka的安装与使用，首先安装kafka，然后通过命令行演示kafka在生产者-消费者模式下的使用。 kafka安装下载kafka在kafka官网下载http://kafka.apache.org/downloads，其中source download为带源码的版本，binary download为不带源码的版本。推荐下载不带源码的2.12版本。 下载后解压即可。 配置kafka主要配置">
+  <meta name="description" content="本文介绍kafka的安装与使用，首先安装kafka，然后通过命令行演示kafka在生产者-消费者模式下的使用，最后介绍常见的退出错误。 kafka安装下载kafka在kafka官网下载http://kafka.apache.org/downloads，其中source download为带源码的版本，binary download为不带源码的版本。推荐下载不带源码的2.12版本。 下载后解压即可。">
 <meta name="keywords" content="kafka,zookeeper">
 <meta property="og:type" content="article">
-<meta property="og:title" content="kafka安装与测试">
-<meta property="og:url" content="http://yoursite.com/2019/12/05/kafka安装与测试/index.html">
+<meta property="og:title" content="kafka安装、测试与常见退出错误">
+<meta property="og:url" content="http://yoursite.com/2019/12/05/kafka安装、测试与常见退出错误/index.html">
 <meta property="og:site_name" content="Code Song">
-<meta property="og:description" content="本文介绍kafka的安装与使用，首先安装kafka，然后通过命令行演示kafka在生产者-消费者模式下的使用。 kafka安装下载kafka在kafka官网下载http://kafka.apache.org/downloads，其中source download为带源码的版本，binary download为不带源码的版本。推荐下载不带源码的2.12版本。 下载后解压即可。 配置kafka主要配置">
+<meta property="og:description" content="本文介绍kafka的安装与使用，首先安装kafka，然后通过命令行演示kafka在生产者-消费者模式下的使用，最后介绍常见的退出错误。 kafka安装下载kafka在kafka官网下载http://kafka.apache.org/downloads，其中source download为带源码的版本，binary download为不带源码的版本。推荐下载不带源码的2.12版本。 下载后解压即可。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://s2.ax1x.com/2019/12/04/Q1qRQU.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/12/04/Q1LVmQ.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/12/04/Q1LGm4.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/12/04/Q1LTBQ.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/12/04/Q1OpB4.png">
-<meta property="og:updated_time" content="2019-12-04T16:00:21.134Z">
+<meta property="og:updated_time" content="2019-12-05T09:09:31.032Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kafka安装与测试">
-<meta name="twitter:description" content="本文介绍kafka的安装与使用，首先安装kafka，然后通过命令行演示kafka在生产者-消费者模式下的使用。 kafka安装下载kafka在kafka官网下载http://kafka.apache.org/downloads，其中source download为带源码的版本，binary download为不带源码的版本。推荐下载不带源码的2.12版本。 下载后解压即可。 配置kafka主要配置">
+<meta name="twitter:title" content="kafka安装、测试与常见退出错误">
+<meta name="twitter:description" content="本文介绍kafka的安装与使用，首先安装kafka，然后通过命令行演示kafka在生产者-消费者模式下的使用，最后介绍常见的退出错误。 kafka安装下载kafka在kafka官网下载http://kafka.apache.org/downloads，其中source download为带源码的版本，binary download为不带源码的版本。推荐下载不带源码的2.12版本。 下载后解压即可。">
 <meta name="twitter:image" content="https://s2.ax1x.com/2019/12/04/Q1qRQU.png">
 
 
@@ -132,7 +132,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/12/05/kafka安装与测试/">
+  <link rel="canonical" href="http://yoursite.com/2019/12/05/kafka安装、测试与常见退出错误/">
 
 
 
@@ -142,7 +142,7 @@
   };
 </script>
 
-  <title>kafka安装与测试 | Code Song</title>
+  <title>kafka安装、测试与常见退出错误 | Code Song</title>
   
 
 
@@ -311,7 +311,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/05/kafka安装与测试/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/05/kafka安装、测试与常见退出错误/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jacob Song">
@@ -328,7 +328,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">kafka安装与测试
+          <h1 class="post-title" itemprop="name headline">kafka安装、测试与常见退出错误
               
             
           </h1>
@@ -353,7 +353,7 @@
                 
               
 
-              <time title="创建时间：2019-12-05 00:00:43 / 修改时间：00:00:21" itemprop="dateCreated datePublished" datetime="2019-12-05T00:00:43+08:00">2019-12-05</time>
+              <time title="创建时间：2019-12-05 17:09:55 / 修改时间：17:09:31" itemprop="dateCreated datePublished" datetime="2019-12-05T17:09:55+08:00">2019-12-05</time>
             
 
             
@@ -409,7 +409,7 @@
       
 
       
-        <p>本文介绍kafka的安装与使用，首先安装kafka，然后通过命令行演示kafka在生产者-消费者模式下的使用。</p>
+        <p>本文介绍kafka的安装与使用，首先安装kafka，然后通过命令行演示kafka在生产者-消费者模式下的使用，最后介绍常见的退出错误。</p>
 <h2 id="kafka安装"><a href="#kafka安装" class="headerlink" title="kafka安装"></a>kafka安装</h2><h4 id="下载kafka"><a href="#下载kafka" class="headerlink" title="下载kafka"></a>下载kafka</h4><p>在kafka官网下载<a href="http://kafka.apache.org/downloads，其中source" target="_blank" rel="noopener">http://kafka.apache.org/downloads，其中source</a> download为带源码的版本，binary download为不带源码的版本。推荐下载不带源码的2.12版本。<br><img src="https://s2.ax1x.com/2019/12/04/Q1qRQU.png" alt="下载kafka" title="下载kafka"></p>
 <p>下载后解压即可。</p>
 <h4 id="配置kafka"><a href="#配置kafka" class="headerlink" title="配置kafka"></a>配置kafka</h4><p>主要配置两个文件：<br>a. config文件夹下的zookeeper.properties中，配置zookeeper数据存储位置：<br><img src="https://s2.ax1x.com/2019/12/04/Q1LVmQ.png" alt="zookeeper配置" title="zookeeper配置"></p>
@@ -425,6 +425,14 @@
 <h4 id="创建消费者"><a href="#创建消费者" class="headerlink" title="创建消费者"></a>创建消费者</h4><p>新打开一个命令行窗口，进入kafka路径下，输入以下命令启动kafka：</p>
 <pre><code>E:\kafka_2.12-2.3.1\bin\windows&gt;kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic test --from-beginning</code></pre><p>这样消费者就开始从消息队列接收生产者发送的消息：<br><img src="https://s2.ax1x.com/2019/12/04/Q1OpB4.png" alt="消费者" title="消费者"></p>
 <p>此时在生产者窗口继续发送消息，消费者可以相应接收到。</p>
+<h2 id="退出错误"><a href="#退出错误" class="headerlink" title="退出错误"></a>退出错误</h2><p>退出时应使用命令行关闭zookeeper和kafka，否则会出现异常：</p>
+<pre><code>bin\windows\zookeeper-server-stop.bat   //关闭zookeeper
+bin\windows\kafka-server-stop.bat       //关闭kafka</code></pre><ul>
+<li>如果忘记关闭zookeeper和kafka，当关闭命令行窗口时，就会强制关闭kafka，这种方式为暴力关闭，很可能会导致kafka无法完成对日志文件的解锁。<br>届时，再次启动kafka的时候，就会提示日志文件被锁，无法成功启动。</li>
+<li>针对这种情况可以如此处理：将kafka日志文件全部删除，再次启动即可。</li>
+<li>建议：不要暴力关闭kafka，通过命令行关闭kafka后再关闭命令行工具。</li>
+<li>在Linux上部署kafka后，一般采用后台运行的方式，会避免以上问题。</li>
+</ul>
 <p>以上就是kafka的安装与初步使用，实际应用时往往不会采用命令行的方式。更多命令可以参考kafka官方手册 <a href="http://kafka.apache.org/documentation" target="_blank" rel="noopener">http://kafka.apache.org/documentation</a></p>
 
       
@@ -635,7 +643,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#kafka安装"><span class="nav-text">kafka安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#下载kafka"><span class="nav-text">下载kafka</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置kafka"><span class="nav-text">配置kafka</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#kafka使用演示"><span class="nav-text">kafka使用演示</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#启动zookeeper"><span class="nav-text">启动zookeeper</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#启动kafka"><span class="nav-text">启动kafka</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建生产者"><span class="nav-text">创建生产者</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建消费者"><span class="nav-text">创建消费者</span></a></li></ol></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#kafka安装"><span class="nav-text">kafka安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#下载kafka"><span class="nav-text">下载kafka</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置kafka"><span class="nav-text">配置kafka</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#kafka使用演示"><span class="nav-text">kafka使用演示</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#启动zookeeper"><span class="nav-text">启动zookeeper</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#启动kafka"><span class="nav-text">启动kafka</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建生产者"><span class="nav-text">创建生产者</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建消费者"><span class="nav-text">创建消费者</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#退出错误"><span class="nav-text">退出错误</span></a></li></div>
             
 
           </div>
