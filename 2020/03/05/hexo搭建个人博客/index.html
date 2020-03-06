@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.3.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="博客是传递、分享技术的一种高效途径，如果你不满足于github、CSND、简书等方式，还可以搭建自己的个人博客，使用hexo搭建个人博客是一种便捷有效的方式。本文手把手演示一种搭建个人博客的方法。通过hexo搭建个人博客，部署到github上；另外介绍如何使用github的域名绑定功能，给个人博客设置域名。 工具及平台：工具：hexo、git、Node.js、npm/cnpm平台：Linux、ma">
+<meta name="keywords" content="hexo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hexo：从零开始搭建并部署个人博客">
+<meta property="og:url" content="http://yoursite.com/2020/03/05/hexo搭建个人博客/index.html">
+<meta property="og:site_name" content="Code Song">
+<meta property="og:description" content="博客是传递、分享技术的一种高效途径，如果你不满足于github、CSND、简书等方式，还可以搭建自己的个人博客，使用hexo搭建个人博客是一种便捷有效的方式。本文手把手演示一种搭建个人博客的方法。通过hexo搭建个人博客，部署到github上；另外介绍如何使用github的域名绑定功能，给个人博客设置域名。 工具及平台：工具：hexo、git、Node.js、npm/cnpm平台：Linux、ma">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://tva1.sinaimg.cn/large/007X8olVly1g76bkdvpyjj30qw0dzjrt.jpg">
+<meta property="og:image" content="http://tva1.sinaimg.cn/large/007X8olVly1g76dtywadfj30lx0aq3z0.jpg">
+<meta property="og:image" content="http://tva1.sinaimg.cn/large/007X8olVly1g76d5z629wj30o908v74h.jpg">
+<meta property="og:image" content="http://tva1.sinaimg.cn/large/007X8olVly1g76esld1nej31f90u0h3q.jpg">
+<meta property="og:image" content="http://tva1.sinaimg.cn/large/007X8olVly1g76e6qf371j30b005ot8p.jpg">
+<meta property="og:image" content="http://tva1.sinaimg.cn/large/007X8olVly1g76ex5em5uj30ye09xjs2.jpg">
+<meta property="og:image" content="http://tva1.sinaimg.cn/large/007X8olVly1g76f1wqqoaj30jc04ugll.jpg">
+<meta property="og:image" content="http://tva1.sinaimg.cn/large/007X8olVly1g76y11uxy2j30s9093gm9.jpg">
+<meta property="og:image" content="http://tva1.sinaimg.cn/large/007X8olVly1g76fj49qunj30qo0g8dg7.jpg">
+<meta property="og:image" content="http://tva1.sinaimg.cn/large/007X8olVly1g76fvakvl8j30jc0830t9.jpg">
+<meta property="og:image" content="http://tva1.sinaimg.cn/large/007X8olVly1g76fovvlo3j317g09hjs1.jpg">
+<meta property="og:updated_time" content="2019-09-22T00:53:22.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="hexo：从零开始搭建并部署个人博客">
+<meta name="twitter:description" content="博客是传递、分享技术的一种高效途径，如果你不满足于github、CSND、简书等方式，还可以搭建自己的个人博客，使用hexo搭建个人博客是一种便捷有效的方式。本文手把手演示一种搭建个人博客的方法。通过hexo搭建个人博客，部署到github上；另外介绍如何使用github的域名绑定功能，给个人博客设置域名。 工具及平台：工具：hexo、git、Node.js、npm/cnpm平台：Linux、ma">
+<meta name="twitter:image" content="http://tva1.sinaimg.cn/large/007X8olVly1g76bkdvpyjj30qw0dzjrt.jpg">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/03/05/hexo搭建个人博客/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>hexo：从零开始搭建并部署个人博客 | Code Song</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Code Song</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/05/hexo搭建个人博客/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jacob Song">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Code Song">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">hexo：从零开始搭建并部署个人博客
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-03-05 13:03:33" itemprop="dateCreated datePublished" datetime="2020-03-05T13:03:33+08:00">2020-03-05</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-09-22 08:53:22" itemprop="dateModified" datetime="2019-09-22T08:53:22+08:00">2019-09-22</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>博客是传递、分享技术的一种高效途径，如果你不满足于github、CSND、简书等方式，还可以搭建自己的个人博客，使用hexo搭建个人博客是一种便捷有效的方式。<br>本文手把手演示一种搭建个人博客的方法。<strong>通过hexo搭建个人博客，部署到github上</strong>；另外介绍如何使用github的域名绑定功能，给个人博客设置域名。</p>
+<h2 id="工具及平台："><a href="#工具及平台：" class="headerlink" title="工具及平台："></a>工具及平台：</h2><p>工具：hexo、git、Node.js、npm/cnpm<br>平台：Linux、macOS、Windows等<br>不同系统操作基本相同，本文以win10为例进行演示。<br>（windows环境需已安装git并配置为环境变量）</p>
+<h2 id="搭建过程："><a href="#搭建过程：" class="headerlink" title="搭建过程："></a>搭建过程：</h2><h3 id="1、安装hexo"><a href="#1、安装hexo" class="headerlink" title="1、安装hexo"></a>1、安装hexo</h3><h4 id="（1）安装Node-js"><a href="#（1）安装Node-js" class="headerlink" title="（1）安装Node.js"></a>（1）安装Node.js</h4><p>Node.js是一个基于Chrome V8引擎的JavaScript运行环境，能够是js运行在服务端。安装方法非常简单：<br>nodejs.org下载安装即可。推荐下载LTS（Long Time Support）版本<br><img src="http://tva1.sinaimg.cn/large/007X8olVly1g76bkdvpyjj30qw0dzjrt.jpg" alt="下载安装Node.js" title="下载安装Node.js"></p>
+<h4 id="（2）安装NPM"><a href="#（2）安装NPM" class="headerlink" title="（2）安装NPM"></a>（2）安装NPM</h4><p>NPM（Node Package Manager）是基于Node.js的包管理工具，方便开发人员分享和获取第三方包并使用。<br>由于NPM镜像是国外资源，安装十分缓慢，因此我们选择安装淘宝团队做的镜像cnpm。在win10环境下，以管理员身份运行CMD，输入以下命令：</p>
+<pre><code>npm install -g cnpm --registry=https://registry.npm.taobao.org</code></pre><p>这样我们便完成了Node.js和NPM的安装，此时我们可以通过查询版本号的方式来验证Node.js和NPM是否安装成功：</p>
+<pre><code>node -v
+npm -v</code></pre><p>如果出现两者的版本信息，说明我们已经成功安装了Node.js和NPM，很简单是吧。</p>
+<h4 id="（3）安装hexo"><a href="#（3）安装hexo" class="headerlink" title="（3）安装hexo"></a>（3）安装hexo</h4><p>使用cnpm安装hexo：</p>
+<pre><code>cnpm install -g hexo-cli    //安装hexo</code></pre><p>同样可以通过查询版本信息确认hexo是否安装成功：</p>
+<pre><code>hexo -v</code></pre><h3 id="2、使用hexo搭建博客"><a href="#2、使用hexo搭建博客" class="headerlink" title="2、使用hexo搭建博客"></a>2、使用hexo搭建博客</h3><h4 id="（1）创建工作路径"><a href="#（1）创建工作路径" class="headerlink" title="（1）创建工作路径"></a>（1）创建工作路径</h4><p>首先在电脑任意位置（如D盘）新建一个文件夹，比如我们命名为blog，在windows系统下，此操作可以直接在D盘操作，或用命令行创建：</p>
+<pre><code>mkdir blog</code></pre><h4 id="（2）初始化博客"><a href="#（2）初始化博客" class="headerlink" title="（2）初始化博客"></a>（2）初始化博客</h4><p>进入blog文件夹并初始化博客：</p>
+<pre><code>cd blog
+hexo init</code></pre><p>注意：在macOS或Linux环境需以管理员身份进行操作</p>
+<p>此时我们就通过hexo完成了博客的初始搭建，hexo会默认创建一个landscape主题。此过程有时较慢，耐心等待。<br>这时我们打开电脑的blog文件夹，会发现生成了许多文件，其中theme文件夹内就是我们博客的主题，后续更改主题需要在此操作。<br><img src="http://tva1.sinaimg.cn/large/007X8olVly1g76dtywadfj30lx0aq3z0.jpg" alt="blog文件夹" title="blog文件夹"></p>
+<h4 id="（3）启动、生成博客"><a href="#（3）启动、生成博客" class="headerlink" title="（3）启动、生成博客"></a>（3）启动、生成博客</h4><p>启动博客：</p>
+<pre><code>hexo s</code></pre><p>启动后会出现本地访问的端口<br><img src="http://tva1.sinaimg.cn/large/007X8olVly1g76d5z629wj30o908v74h.jpg" alt="hexo启动" title="hexo启动"><br>在浏览器中输入 localhost:4000 ,就可以进入我们刚刚生成的博客主页了。大概长这个样子：<br><img src="http://tva1.sinaimg.cn/large/007X8olVly1g76esld1nej31f90u0h3q.jpg" alt="landscape主页" title="初始博客主页"><br> 很激动对吧！别着急，个人搭建的博客可玩性可不仅如此呢，接下来简单介绍如何在新建文章。</p>
+<h4 id="（4）新建文章"><a href="#（4）新建文章" class="headerlink" title="（4）新建文章"></a>（4）新建文章</h4><p> windows环境下推荐直接将写好的文章放在blog/source/_post路径下：</p>
+<p> <img src="http://tva1.sinaimg.cn/large/007X8olVly1g76e6qf371j30b005ot8p.jpg" alt="新建文章" title="新建一篇博客"><br>当然也可以像macOS或Linux下使用命令行新建文章，然后进行编辑：</p>
+<pre><code>hexo n &quot;新建的文章&quot;</code></pre><p>博客一般使用markdown格式（.md），非常方便的一种格式，网上有很多介绍，大家可以学习一下。</p>
+<h4 id="（5）更新博客"><a href="#（5）更新博客" class="headerlink" title="（5）更新博客"></a>（5）更新博客</h4><p>对博客内容、主题进行修改后，比如刚才新建了一篇文章，需要将修改更新。<br>一般需要在blog目录下按顺序进行清理（clean）、生成（generate）、启动（sever/start）操作：</p>
+<pre><code>hexo clean
+hexo g
+hexo s</code></pre><p>至此我们就完成了个人博客的创建，以及如何对博客进行修改等操作。不过我们的博客现在只能通过本地端口（localhost）访问调试，怎么才能让别人看到我们的博客呢？</p>
+<p>接下来就来介绍如何将博客部署到github上进行访问。</p>
+<h3 id="3、将博客部署到github上"><a href="#3、将博客部署到github上" class="headerlink" title="3、将博客部署到github上"></a>3、将博客部署到github上</h3><h4 id="（1）在github上新建仓库"><a href="#（1）在github上新建仓库" class="headerlink" title="（1）在github上新建仓库"></a>（1）在github上新建仓库</h4><p>仓库名称必须为 xxx.github.io(其中xxx为自己的github用户名)，如codesong99.github.io,并得到仓库地址：<br><img src="http://tva1.sinaimg.cn/large/007X8olVly1g76ex5em5uj30ye09xjs2.jpg" alt="github仓库地址" title="github仓库地址"></p>
+<h4 id="2）在blog目录下安装一个git的部署插件"><a href="#2）在blog目录下安装一个git的部署插件" class="headerlink" title="2）在blog目录下安装一个git的部署插件"></a>2）在blog目录下安装一个git的部署插件</h4><pre><code>cnpm install --save hexo-deployer-git</code></pre><h4 id="3）修改blog目录下的配置文件"><a href="#3）修改blog目录下的配置文件" class="headerlink" title="3）修改blog目录下的配置文件"></a>3）修改blog目录下的配置文件</h4><p>打开blog目录下的_config.yml文件，在最后几行的部署（deploy）信息位置添加以下配置：<br><img src="http://tva1.sinaimg.cn/large/007X8olVly1g76f1wqqoaj30jc04ugll.jpg" alt="deploy配置" title="deploy配置"><br>部署类型为git，仓库地址为刚才获得的github仓库地址，branch设置为master，修改完成后保存并关闭。<br>注意冒号后有一个空格。</p>
+<h4 id="（4）将博客部署远端"><a href="#（4）将博客部署远端" class="headerlink" title="（4）将博客部署远端"></a>（4）将博客部署远端</h4><p>回到CMD窗口，在blog目录下输入一下命令，将博客推到远端：</p>
+<pre><code>hexo d</code></pre><p>这个”d”就是deploy的意思。此过程需要输入github账号及密码。</p>
+<p>至此我们就完成了搭建hexo博客并部署到github上的所有工作，在浏览器中输入xxx.github.io即可访问自己的个人博客。</p>
+<h3 id="4、One-More-Thing"><a href="#4、One-More-Thing" class="headerlink" title="4、One More Thing"></a>4、One More Thing</h3><p>虽然我们已经完成了个人博客的搭建，并部署到github上进行访问，但默认的landscape主题、xxxxxxx.github.io的地址是不是感觉跟真正的博客还有些不同？<br>上文中已经简单提到，我们可以自己修改个人博客的主题（将博客主题放在theme路径下），具体实现就要考验大家的审美和动手能力了，网上也有很多优秀的修改方法、模板，本文不再介绍。<br>接下来我将简单介绍如何设置自己的域名来访问博客。</p>
+<h4 id="绑定域名"><a href="#绑定域名" class="headerlink" title="绑定域名"></a>绑定域名</h4><p>github支持绑定域名，来访问我们的博客。只需在github上绑定域名，并将域名解析到github仓库即可。具体需要以下三个步骤：</p>
+<p>首先在github博客仓库中新建一个”CNAME”的文件，文件内容为自己注册的域名（可在阿里云、腾讯云购买域名，暂不需要购买服务器），如“codesong.cn”：<br><img src="http://tva1.sinaimg.cn/large/007X8olVly1g76y11uxy2j30s9093gm9.jpg" alt="CNAME"><br>这样我们在仓库的settings-&gt;options-&gt;Custom domain界面就能看到自己绑定的域名啦：<br><img src="http://tva1.sinaimg.cn/large/007X8olVly1g76fj49qunj30qo0g8dg7.jpg" alt="github绑定域名" title="github绑定域名"></p>
+<p>第二步，ping一下自己github仓库的ip：<br><img src="http://tva1.sinaimg.cn/large/007X8olVly1g76fvakvl8j30jc0830t9.jpg" alt="ping" title="ping"></p>
+<p>最后将自己的域名解析中添加www、@两条A型记录，其中“记录值”为刚才ping到的github仓库ip<br><img src="http://tva1.sinaimg.cn/large/007X8olVly1g76fovvlo3j317g09hjs1.jpg" alt="域名解析" title="添加域名解析"></p>
+<p>这样，我们就可以同时通过 用户名.github.io 和自己注册的域名来访问个人博客了。</p>
+<p>以上就是本文的全部内容了，希望大家早日熟练hexo clean 、hexo g 、hexo d 三连~</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/hexo/" rel="tag"># hexo</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/03/05/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/03/05/Java虚拟机/" rel="prev" title="Java虚拟机">
+                Java虚拟机 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Jacob Song</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#工具及平台："><span class="nav-text">工具及平台：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#搭建过程："><span class="nav-text">搭建过程：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、安装hexo"><span class="nav-text">1、安装hexo</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#（1）安装Node-js"><span class="nav-text">（1）安装Node.js</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（2）安装NPM"><span class="nav-text">（2）安装NPM</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（3）安装hexo"><span class="nav-text">（3）安装hexo</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、使用hexo搭建博客"><span class="nav-text">2、使用hexo搭建博客</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#（1）创建工作路径"><span class="nav-text">（1）创建工作路径</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（2）初始化博客"><span class="nav-text">（2）初始化博客</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（3）启动、生成博客"><span class="nav-text">（3）启动、生成博客</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（4）新建文章"><span class="nav-text">（4）新建文章</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（5）更新博客"><span class="nav-text">（5）更新博客</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、将博客部署到github上"><span class="nav-text">3、将博客部署到github上</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#（1）在github上新建仓库"><span class="nav-text">（1）在github上新建仓库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2）在blog目录下安装一个git的部署插件"><span class="nav-text">2）在blog目录下安装一个git的部署插件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3）修改blog目录下的配置文件"><span class="nav-text">3）修改blog目录下的配置文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（4）将博客部署远端"><span class="nav-text">（4）将博客部署远端</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、One-More-Thing"><span class="nav-text">4、One More Thing</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#绑定域名"><span class="nav-text">绑定域名</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jacob Song</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.9.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a> v6.3.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.3.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.3.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="最近换了新电脑，将之前可以正常运行的spring boot社区项目迁移到新电脑上时，在IDEA中使用maven管理项目时，出现了了无法下载插件，maven plugins和依赖大面积报红的，导致项目无法启动的情况。下面时本人使用的开发工具、错误现象和解决方法。 开发工具 InteliJ IDEA 2019.2.3  maven 3.6.1  操作系统：Windows 10家庭版  maven镜像：">
+<meta name="keywords" content="maven,IDEA">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IDEA无法加载依赖，maven插件报红常见原因">
+<meta property="og:url" content="http://yoursite.com/2020/03/06/IDEA无法加载maven插件/index.html">
+<meta property="og:site_name" content="Code Song">
+<meta property="og:description" content="最近换了新电脑，将之前可以正常运行的spring boot社区项目迁移到新电脑上时，在IDEA中使用maven管理项目时，出现了了无法下载插件，maven plugins和依赖大面积报红的，导致项目无法启动的情况。下面时本人使用的开发工具、错误现象和解决方法。 开发工具 InteliJ IDEA 2019.2.3  maven 3.6.1  操作系统：Windows 10家庭版  maven镜像：">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://s2.ax1x.com/2020/03/06/3qbf4e.png">
+<meta property="og:image" content="https://s2.ax1x.com/2020/03/06/3qqKDx.png">
+<meta property="og:image" content="https://s2.ax1x.com/2020/03/06/3qLWSH.png">
+<meta property="og:image" content="https://s2.ax1x.com/2020/03/06/3qvk9S.png">
+<meta property="og:image" content="https://s2.ax1x.com/2020/03/06/3LCaEd.jpg">
+<meta property="og:image" content="https://s2.ax1x.com/2020/03/06/3L9Wp6.png">
+<meta property="og:updated_time" content="2020-03-06T09:38:49.400Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="IDEA无法加载依赖，maven插件报红常见原因">
+<meta name="twitter:description" content="最近换了新电脑，将之前可以正常运行的spring boot社区项目迁移到新电脑上时，在IDEA中使用maven管理项目时，出现了了无法下载插件，maven plugins和依赖大面积报红的，导致项目无法启动的情况。下面时本人使用的开发工具、错误现象和解决方法。 开发工具 InteliJ IDEA 2019.2.3  maven 3.6.1  操作系统：Windows 10家庭版  maven镜像：">
+<meta name="twitter:image" content="https://s2.ax1x.com/2020/03/06/3qbf4e.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/03/06/IDEA无法加载maven插件/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>IDEA无法加载依赖，maven插件报红常见原因 | Code Song</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Code Song</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/06/IDEA无法加载maven插件/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jacob Song">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Code Song">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">IDEA无法加载依赖，maven插件报红常见原因
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-03-06 17:39:57 / 修改时间：17:38:49" itemprop="dateCreated datePublished" datetime="2020-03-06T17:39:57+08:00">2020-03-06</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/maven/" itemprop="url" rel="index"><span itemprop="name">maven</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>最近换了新电脑，将之前可以正常运行的spring boot社区项目迁移到新电脑上时，在IDEA中使用maven管理项目时，出现了了无法下载插件，maven plugins和依赖大面积报红的，导致项目无法启动的情况。<br>下面时本人使用的开发工具、错误现象和解决方法。</p>
+<h2 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h2><ul>
+<li><p>InteliJ IDEA 2019.2.3</p>
+</li>
+<li><p>maven 3.6.1</p>
+</li>
+<li><p>操作系统：Windows 10家庭版</p>
+</li>
+<li><p>maven镜像：阿里云仓库</p>
+</li>
+</ul>
+<p>电脑上安装IDEA、maven，并将maven镜像设置为阿里云仓库后，在IDEA中设置maven路径、setting文件、本地仓库位置：<br><img src="https://s2.ax1x.com/2020/03/06/3qbf4e.png" alt="maven设置" title="maven设置"></p>
+<h2 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h2><ul>
+<li>在新电脑上安装、配置好maven后打开spring boot社区项目，maven插件和依赖出现大面积红色报错，如下：<br><img src="https://s2.ax1x.com/2020/03/06/3qqKDx.png" alt="maven报错" title="maven报错"></li>
+</ul>
+<ul>
+<li>多次点击“Reimport ALL Maven Projects”重新导入maven依赖都无效，新建一个maven工程，出现“Cannot resolve plugin org.apache.maven.plugins:maven-clean-plugins:2.5”等报错：<br><img src="https://s2.ax1x.com/2020/03/06/3qLWSH.png" alt="maven报错2" title="maven报错2"></li>
+</ul>
+<p>显然，maven无法从仓库中下载文件，导致本地maven仓库中没有所需插件而报错。</p>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>在网上找了多种报错原因及解决方法，maven配置出现错误的情况很多，下面介绍常见的情况和解决方法。</p>
+<h3 id="①IDEA中maven设置不正确"><a href="#①IDEA中maven设置不正确" class="headerlink" title="①IDEA中maven设置不正确"></a>①IDEA中maven设置不正确</h3><p>上文中介绍我的开发环境时提到，IDEA中需要设置Maven home direction、User setting file、Local repository三项，分别时使用的maven路径、maven配置文件、maven本地仓库存放位置。<br>要理解三个选项的意思，合理配置，最好保持一致。</p>
+<h3 id="②重新加载maven项目时，需删除旧文件"><a href="#②重新加载maven项目时，需删除旧文件" class="headerlink" title="②重新加载maven项目时，需删除旧文件"></a>②重新加载maven项目时，需删除旧文件</h3><p>maven从仓库中下载文件到本机时，下载失败时会产生后缀为“lastUpadated”的文件，如下图：</p>
+<p><img src="https://s2.ax1x.com/2020/03/06/3qvk9S.png" alt="maven报错2" title="maven报错2"></p>
+<p>点击“Reimport ALL Maven Projects”重新下载maven文件时，如果不删除这些文件，新文件也无法下载。</p>
+<p>因此需要在本地maven仓库中删除所有 .lastUpdated 文件，才能重新加载maven工程。这是maven项目加载失败的<strong>常见原因</strong>之一。</p>
+<h3 id="③镜像仓库证书有问题"><a href="#③镜像仓库证书有问题" class="headerlink" title="③镜像仓库证书有问题"></a>③镜像仓库证书有问题</h3><p>导入maven仓库时出现镜像仓库证书报错：</p>
+<pre><code>Could not transfer artifact org.mybatis.spring.boot:mybatis-spring-boot-starter:pom:2.1.1 from/to nexus-aliyun (http://maven.aliyun.com/nexus/content/groups/public): PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target</code></pre><p>最后一句“unable to find valid certification path”，说明报错原因是在Java库中没有找到镜像仓库<a href="https://maven.aliyun.com的证书，需要将该网站的证书添加到密匙库中。" target="_blank" rel="noopener">https://maven.aliyun.com的证书，需要将该网站的证书添加到密匙库中。</a><br>具体操作可以参考：<a href="https://www.firstxueba.com/thread-3510-1-1.html" target="_blank" rel="noopener">https://www.firstxueba.com/thread-3510-1-1.html</a></p>
+<p>我完成添加证书的操作后，问题仍然没有解决。</p>
+<h3 id="最终的解决方法-使用maven默认仓库"><a href="#最终的解决方法-使用maven默认仓库" class="headerlink" title="最终的解决方法-使用maven默认仓库"></a>最终的解决方法-使用maven默认仓库</h3><p>以上是三种常见的maven错误以及解决方法，本人一一尝试后还是没有解决问题。<br>但是经过分析确定我出错的原因是：<strong>无法从maven的阿里云镜像仓库中下载文件</strong>，导致maven plugins、dependencies无法加载。</p>
+<p>因此我决定在maven的配置文件中将阿里云镜像删掉，<strong>使用maven默认仓库</strong>。</p>
+<p>删除所有.lastUpdated文件重新导入maven项目，在漫长的等待之后，maven终于从默认仓库中下载所有文件。 plugin和dependency报红消失，问题解决：</p>
+<p><img src="https://s2.ax1x.com/2020/03/06/3LCaEd.jpg" alt="成功加载依赖" title="成功加载依赖"></p>
+<p>查看本地仓库如下：</p>
+<p><img src="https://s2.ax1x.com/2020/03/06/3L9Wp6.png" alt="maven本地仓库" title="maven本地仓库"></p>
+<p>另外，在网上看到有人对于我这种maven大面积报红的现象，建议是使用IDEA自带的maven，不使用自己安装的maven，否则很难解决问题。 原文链接 <a href="https://blog.csdn.net/qq_43114196/article/details/104100089" target="_blank" rel="noopener">https://blog.csdn.net/qq_43114196/article/details/104100089</a> 可做参考。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>上文介绍的几种常见的错误及方法，基本上能解决大多IDEA配置maven的问题。</p>
+<p>最终的解决方法是进行使用maven默认的仓库，没有使用阿里云镜像仓库。虽然有些妥协，默认仓库加载速度稍慢，但最终解决了问题，并且对maven的配置和使用方法更加熟悉，也算是收获吧。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/maven/" rel="tag"># maven</a>
+          
+            <a href="/tags/IDEA/" rel="tag"># IDEA</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/03/05/有加网咖/" rel="next" title>
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Jacob Song</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#开发工具"><span class="nav-text">开发工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#报错"><span class="nav-text">报错</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决方法"><span class="nav-text">解决方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#①IDEA中maven设置不正确"><span class="nav-text">①IDEA中maven设置不正确</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#②重新加载maven项目时，需删除旧文件"><span class="nav-text">②重新加载maven项目时，需删除旧文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#③镜像仓库证书有问题"><span class="nav-text">③镜像仓库证书有问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最终的解决方法-使用maven默认仓库"><span class="nav-text">最终的解决方法-使用maven默认仓库</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jacob Song</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.9.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a> v6.3.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.3.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
