@@ -122,7 +122,7 @@
 <meta property="og:image" content="https://s2.ax1x.com/2020/03/06/3qvk9S.png">
 <meta property="og:image" content="https://s2.ax1x.com/2020/03/06/3LCaEd.jpg">
 <meta property="og:image" content="https://s2.ax1x.com/2020/03/06/3L9Wp6.png">
-<meta property="og:updated_time" content="2020-03-06T09:38:49.400Z">
+<meta property="og:updated_time" content="2020-03-06T12:19:04.123Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="IDEA无法加载依赖，maven插件报红常见原因">
 <meta name="twitter:description" content="最近换了新电脑，将之前可以正常运行的spring boot社区项目迁移到新电脑上时，在IDEA中使用maven管理项目时，出现了了无法下载插件，maven plugins和依赖大面积报红的，导致项目无法启动的情况。下面时本人使用的开发工具、错误现象和解决方法。 开发工具 InteliJ IDEA 2019.2.3  maven 3.6.1  操作系统：Windows 10家庭版  maven镜像：">
@@ -354,7 +354,7 @@
                 
               
 
-              <time title="创建时间：2020-03-06 17:39:57 / 修改时间：17:38:49" itemprop="dateCreated datePublished" datetime="2020-03-06T17:39:57+08:00">2020-03-06</time>
+              <time title="创建时间：2020-03-06 17:39:57 / 修改时间：20:19:04" itemprop="dateCreated datePublished" datetime="2020-03-06T17:39:57+08:00">2020-03-06</time>
             
 
             
@@ -436,7 +436,7 @@
 <p>点击“Reimport ALL Maven Projects”重新下载maven文件时，如果不删除这些文件，新文件也无法下载。</p>
 <p>因此需要在本地maven仓库中删除所有 .lastUpdated 文件，才能重新加载maven工程。这是maven项目加载失败的<strong>常见原因</strong>之一。</p>
 <h3 id="③镜像仓库证书有问题"><a href="#③镜像仓库证书有问题" class="headerlink" title="③镜像仓库证书有问题"></a>③镜像仓库证书有问题</h3><p>导入maven仓库时出现镜像仓库证书报错：</p>
-<pre><code>Could not transfer artifact org.mybatis.spring.boot:mybatis-spring-boot-starter:pom:2.1.1 from/to nexus-aliyun (http://maven.aliyun.com/nexus/content/groups/public): PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target</code></pre><p>最后一句“unable to find valid certification path”，说明报错原因是在Java库中没有找到镜像仓库<a href="https://maven.aliyun.com的证书，需要将该网站的证书添加到密匙库中。" target="_blank" rel="noopener">https://maven.aliyun.com的证书，需要将该网站的证书添加到密匙库中。</a><br>具体操作可以参考：<a href="https://www.firstxueba.com/thread-3510-1-1.html" target="_blank" rel="noopener">https://www.firstxueba.com/thread-3510-1-1.html</a></p>
+<pre><code>Could not transfer artifact org.mybatis.spring.boot:mybatis-spring-boot-starter:pom:2.1.1 from/to nexus-aliyun (http://maven.aliyun.com/nexus/content/groups/public): PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target</code></pre><p>最后一句“unable to find valid certification path”，说明报错原因是在Java库中没有找到镜像仓库<a href="https://maven.aliyun.com" target="_blank" rel="noopener">https://maven.aliyun.com</a> 的证书，需要将该网站的证书添加到密匙库中。<br>具体操作可以参考：<a href="https://www.firstxueba.com/thread-3510-1-1.html" target="_blank" rel="noopener">https://www.firstxueba.com/thread-3510-1-1.html</a></p>
 <p>我完成添加证书的操作后，问题仍然没有解决。</p>
 <h3 id="最终的解决方法-使用maven默认仓库"><a href="#最终的解决方法-使用maven默认仓库" class="headerlink" title="最终的解决方法-使用maven默认仓库"></a>最终的解决方法-使用maven默认仓库</h3><p>以上是三种常见的maven错误以及解决方法，本人一一尝试后还是没有解决问题。<br>但是经过分析确定我出错的原因是：<strong>无法从maven的阿里云镜像仓库中下载文件</strong>，导致maven plugins、dependencies无法加载。</p>
 <p>因此我决定在maven的配置文件中将阿里云镜像删掉，<strong>使用maven默认仓库</strong>。</p>
