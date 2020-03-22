@@ -108,31 +108,21 @@
 
 
 
-  <meta name="description" content="本文介绍kafka的安装与使用，首先安装kafka，然后通过命令行演示kafka在生产者-消费者模式下的使用，最后介绍常见的退出错误。 kafka安装下载kafka在kafka官网下载http://kafka.apache.org/downloads，其中source download为带源码的版本，binary download为不带源码的版本。推荐下载不带源码的2.12版本。 下载后解压即可。">
-<meta name="keywords" content="kafka,zookeeper">
-<meta property="og:type" content="article">
-<meta property="og:title" content="kafka安装、测试与常见退出错误">
-<meta property="og:url" content="http://yoursite.com/2020/03/05/kafka安装、测试与常见退出错误/index.html">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="Code Song">
+<meta property="og:url" content="http://yoursite.com/2020/03/22/剑指Offer刷题笔记及Java源码-树/index.html">
 <meta property="og:site_name" content="Code Song">
-<meta property="og:description" content="本文介绍kafka的安装与使用，首先安装kafka，然后通过命令行演示kafka在生产者-消费者模式下的使用，最后介绍常见的退出错误。 kafka安装下载kafka在kafka官网下载http://kafka.apache.org/downloads，其中source download为带源码的版本，binary download为不带源码的版本。推荐下载不带源码的2.12版本。 下载后解压即可。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://s2.ax1x.com/2019/12/04/Q1qRQU.png">
-<meta property="og:image" content="https://s2.ax1x.com/2019/12/04/Q1LVmQ.png">
-<meta property="og:image" content="https://s2.ax1x.com/2019/12/04/Q1LGm4.png">
-<meta property="og:image" content="https://s2.ax1x.com/2019/12/04/Q1LTBQ.png">
-<meta property="og:image" content="https://s2.ax1x.com/2019/12/04/Q1OpB4.png">
-<meta property="og:updated_time" content="2019-12-05T15:32:20.455Z">
+<meta property="og:updated_time" content="2020-03-22T08:13:24.984Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kafka安装、测试与常见退出错误">
-<meta name="twitter:description" content="本文介绍kafka的安装与使用，首先安装kafka，然后通过命令行演示kafka在生产者-消费者模式下的使用，最后介绍常见的退出错误。 kafka安装下载kafka在kafka官网下载http://kafka.apache.org/downloads，其中source download为带源码的版本，binary download为不带源码的版本。推荐下载不带源码的2.12版本。 下载后解压即可。">
-<meta name="twitter:image" content="https://s2.ax1x.com/2019/12/04/Q1qRQU.png">
+<meta name="twitter:title" content="Code Song">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/03/05/kafka安装、测试与常见退出错误/">
+  <link rel="canonical" href="http://yoursite.com/2020/03/22/剑指Offer刷题笔记及Java源码-树/">
 
 
 
@@ -142,7 +132,7 @@
   };
 </script>
 
-  <title>kafka安装、测试与常见退出错误 | Code Song</title>
+  <title> | Code Song</title>
   
 
 
@@ -311,7 +301,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/05/kafka安装、测试与常见退出错误/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/22/剑指Offer刷题笔记及Java源码-树/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jacob Song">
@@ -328,7 +318,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">kafka安装、测试与常见退出错误
+          <h1 class="post-title" itemprop="name headline">
               
             
           </h1>
@@ -353,46 +343,16 @@
                 
               
 
-              <time title="创建时间：2020-03-05 13:03:33" itemprop="dateCreated datePublished" datetime="2020-03-05T13:03:33+08:00">2020-03-05</time>
+              <time title="创建时间：2020-03-22 16:52:46 / 修改时间：16:13:24" itemprop="dateCreated datePublished" datetime="2020-03-22T16:52:46+08:00">2020-03-22</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-12-05 23:32:20" itemprop="dateModified" datetime="2019-12-05T23:32:20+08:00">2019-12-05</time>
               
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/kafka/" itemprop="url" rel="index"><span itemprop="name">kafka</span></a></span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -421,32 +381,7 @@
       
 
       
-        <p>本文介绍kafka的安装与使用，首先安装kafka，然后通过命令行演示kafka在生产者-消费者模式下的使用，最后介绍常见的退出错误。</p>
-<h2 id="kafka安装"><a href="#kafka安装" class="headerlink" title="kafka安装"></a>kafka安装</h2><h4 id="下载kafka"><a href="#下载kafka" class="headerlink" title="下载kafka"></a>下载kafka</h4><p>在kafka官网下载<a href="http://kafka.apache.org/downloads，其中source" target="_blank" rel="noopener">http://kafka.apache.org/downloads，其中source</a> download为带源码的版本，binary download为不带源码的版本。推荐下载不带源码的2.12版本。<br><img src="https://s2.ax1x.com/2019/12/04/Q1qRQU.png" alt="下载kafka" title="下载kafka"></p>
-<p>下载后解压即可。</p>
-<h4 id="配置kafka"><a href="#配置kafka" class="headerlink" title="配置kafka"></a>配置kafka</h4><p>主要配置两个文件：<br>a. config文件夹下的zookeeper.properties中，配置zookeeper数据存储位置：<br><img src="https://s2.ax1x.com/2019/12/04/Q1LVmQ.png" alt="zookeeper配置" title="zookeeper配置"></p>
-<p>b.config文件夹下的server.properties中，配置kafka日志文件存放位置：<br><img src="https://s2.ax1x.com/2019/12/04/Q1LGm4.png" alt="server配置" title="server配置"></p>
-<h2 id="kafka使用演示"><a href="#kafka使用演示" class="headerlink" title="kafka使用演示"></a>kafka使用演示</h2><p>此部分使用命令行，演示kafka在生产者-消费者模式下发送、接收消息。<br>kafka在Windows下的命令在 kafka_2.12-2.3.1\bin\windows 路径下</p>
-<h4 id="启动zookeeper"><a href="#启动zookeeper" class="headerlink" title="启动zookeeper"></a>启动zookeeper</h4><p>打开命令行，进入kafka路径下，输入以下命令启动zookeeper：</p>
-<pre><code>E:\kafka_2.12-2.3.1&gt;bin\windows\zookeeper-server-start.bat config\zookeeper.properties</code></pre><h4 id="启动kafka"><a href="#启动kafka" class="headerlink" title="启动kafka"></a>启动kafka</h4><p>新打开一个命令行窗口，进入kafka路径下，输入以下命令启动kafka：</p>
-<pre><code>E:\kafka_2.12-2.3.1&gt;bin\windows\kafka-server-start.bat config\server.properties</code></pre><p>此时进入上文配置文件设置的文件夹，可以看到zookeeper和kafka日志相应的文件。</p>
-<h4 id="创建生产者"><a href="#创建生产者" class="headerlink" title="创建生产者"></a>创建生产者</h4><p>kafka使用的发布-订阅模式，新打开一个命令行窗口，进入kafka路径下，新建一个主题：</p>
-<pre><code>E:\kafka_2.12-2.3.1\bin\windows&gt;kafka-topics.bat --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic test</code></pre><p>查看当前所有主题（只有一个test）：</p>
-<pre><code>E:\kafka_2.12-2.3.1\bin\windows&gt;kafka-topics.bat --list --bootstrap-server localhost:9092</code></pre><p>生产者发送消息队列：</p>
-<pre><code>E:\kafka_2.12-2.3.1\bin\windows&gt;kafka-console-producer.bat --broker-list localhost:9092 --topic test</code></pre><p>具体如下图：<br><img src="https://s2.ax1x.com/2019/12/04/Q1LTBQ.png" alt="生产者" title="生产者"></p>
-<h4 id="创建消费者"><a href="#创建消费者" class="headerlink" title="创建消费者"></a>创建消费者</h4><p>新打开一个命令行窗口，进入kafka路径下，输入以下命令启动kafka：</p>
-<pre><code>E:\kafka_2.12-2.3.1\bin\windows&gt;kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic test --from-beginning</code></pre><p>这样消费者就开始从消息队列接收生产者发送的消息：<br><img src="https://s2.ax1x.com/2019/12/04/Q1OpB4.png" alt="消费者" title="消费者"></p>
-<p>此时在生产者窗口继续发送消息，消费者可以相应接收到。</p>
-<h2 id="退出错误"><a href="#退出错误" class="headerlink" title="退出错误"></a>退出错误</h2><p>退出时应使用命令行关闭zookeeper和kafka，否则会出现异常：</p>
-<pre><code>bin\windows\zookeeper-server-stop.bat   //关闭zookeeper
-bin\windows\kafka-server-stop.bat       //关闭kafka</code></pre><ul>
-<li>如果忘记关闭zookeeper和kafka，当关闭命令行窗口时，就会强制关闭kafka，这种方式为暴力关闭，很可能会导致kafka无法完成对日志文件的解锁。<br>届时，再次启动kafka的时候，就会提示日志文件被锁，无法成功启动。</li>
-<li>针对这种情况可以如此处理：将kafka日志文件全部删除，再次启动即可。</li>
-<li>建议：不要暴力关闭kafka，通过命令行关闭kafka后再关闭命令行工具。</li>
-<li>在Linux上部署kafka后，一般采用后台运行的方式，会避免以上问题。</li>
-</ul>
-<p>以上就是kafka的安装与初步使用，实际应用时往往不会采用命令行的方式。更多命令可以参考kafka官方手册 <a href="http://kafka.apache.org/documentation" target="_blank" rel="noopener">http://kafka.apache.org/documentation</a></p>
-
+        
       
     </div>
 
@@ -464,14 +399,6 @@ bin\windows\kafka-server-stop.bat       //关闭kafka</code></pre><ul>
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/kafka/" rel="tag"># kafka</a>
-          
-            <a href="/tags/zookeeper/" rel="tag"># zookeeper</a>
-          
-        </div>
-      
 
       
       
@@ -481,8 +408,8 @@ bin\windows\kafka-server-stop.bat       //关闭kafka</code></pre><ul>
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/03/05/Kafka发送消息与AOP冲突报错/" rel="next" title="Kafka发送消息与AOP冲突报错">
-                <i class="fa fa-chevron-left"></i> Kafka发送消息与AOP冲突报错
+              <a href="/2020/03/06/IDEA无法加载maven插件/" rel="next" title="IDEA无法加载依赖，maven插件报红常见原因">
+                <i class="fa fa-chevron-left"></i> IDEA无法加载依赖，maven插件报红常见原因
               </a>
             
           </div>
@@ -490,10 +417,6 @@ bin\windows\kafka-server-stop.bat       //关闭kafka</code></pre><ul>
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/03/05/MockMvc进行controller测试无法导入equalTo/" rel="prev" title="SpringBoot使用MockMvc进行controller测试 无法导入equalTo()">
-                SpringBoot使用MockMvc进行controller测试 无法导入equalTo() <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -542,17 +465,8 @@ bin\windows\kafka-server-stop.bat       //关闭kafka</code></pre><ul>
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -665,22 +579,6 @@ bin\windows\kafka-server-stop.bat       //关闭kafka</code></pre><ul>
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#kafka安装"><span class="nav-text">kafka安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#下载kafka"><span class="nav-text">下载kafka</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置kafka"><span class="nav-text">配置kafka</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#kafka使用演示"><span class="nav-text">kafka使用演示</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#启动zookeeper"><span class="nav-text">启动zookeeper</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#启动kafka"><span class="nav-text">启动kafka</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建生产者"><span class="nav-text">创建生产者</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建消费者"><span class="nav-text">创建消费者</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#退出错误"><span class="nav-text">退出错误</span></a></li></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
