@@ -108,14 +108,18 @@
 
 
 
-  <meta property="og:type" content="article">
-<meta property="og:title" content="Code Song">
+  <meta name="description" content="最近又刷了一遍剑指Offer，本文介绍剑指Offer中与树有关题目的解题思路和Java源码。所有代码都是在牛客剑指Offer上提交通过的。 题目大纲04 重建二叉树  16 树的子结构 17 二叉树的镜像   21 从上往下打印二叉树   22 二叉搜索树的后序遍历序列 23 二叉树中和为某一值的路径 37 二叉树的深度 38 平衡二叉树 56 二叉树的下一个结点 61 二叉搜索树的第k个结点 解">
+<meta name="keywords" content="剑指Offer">
+<meta property="og:type" content="article">
+<meta property="og:title" content="剑指Offer刷题笔记及Java源码-树">
 <meta property="og:url" content="http://yoursite.com/2020/03/22/剑指Offer刷题笔记及Java源码-树/index.html">
 <meta property="og:site_name" content="Code Song">
+<meta property="og:description" content="最近又刷了一遍剑指Offer，本文介绍剑指Offer中与树有关题目的解题思路和Java源码。所有代码都是在牛客剑指Offer上提交通过的。 题目大纲04 重建二叉树  16 树的子结构 17 二叉树的镜像   21 从上往下打印二叉树   22 二叉搜索树的后序遍历序列 23 二叉树中和为某一值的路径 37 二叉树的深度 38 平衡二叉树 56 二叉树的下一个结点 61 二叉搜索树的第k个结点 解">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-03-22T08:13:24.984Z">
+<meta property="og:updated_time" content="2020-03-22T09:24:46.679Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Code Song">
+<meta name="twitter:title" content="剑指Offer刷题笔记及Java源码-树">
+<meta name="twitter:description" content="最近又刷了一遍剑指Offer，本文介绍剑指Offer中与树有关题目的解题思路和Java源码。所有代码都是在牛客剑指Offer上提交通过的。 题目大纲04 重建二叉树  16 树的子结构 17 二叉树的镜像   21 从上往下打印二叉树   22 二叉搜索树的后序遍历序列 23 二叉树中和为某一值的路径 37 二叉树的深度 38 平衡二叉树 56 二叉树的下一个结点 61 二叉搜索树的第k个结点 解">
 
 
 
@@ -132,7 +136,7 @@
   };
 </script>
 
-  <title> | Code Song</title>
+  <title>剑指Offer刷题笔记及Java源码-树 | Code Song</title>
   
 
 
@@ -318,7 +322,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h1 class="post-title" itemprop="name headline">剑指Offer刷题笔记及Java源码-树
               
             
           </h1>
@@ -343,7 +347,7 @@
                 
               
 
-              <time title="创建时间：2020-03-22 16:52:46 / 修改时间：16:13:24" itemprop="dateCreated datePublished" datetime="2020-03-22T16:52:46+08:00">2020-03-22</time>
+              <time title="创建时间：2020-03-22 16:52:46 / 修改时间：17:24:46" itemprop="dateCreated datePublished" datetime="2020-03-22T16:52:46+08:00">2020-03-22</time>
             
 
             
@@ -353,6 +357,24 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/剑指Offer/" itemprop="url" rel="index"><span itemprop="name">剑指Offer</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -381,7 +403,254 @@
       
 
       
-        
+        <p>最近又刷了一遍剑指Offer，本文介绍剑指Offer中与树有关题目的解题思路和Java源码。<br>所有代码都是在牛客剑指Offer上提交通过的。</p>
+<h2 id="题目大纲"><a href="#题目大纲" class="headerlink" title="题目大纲"></a>题目大纲</h2><pre><code>04 重建二叉树 
+16 树的子结构
+17 二叉树的镜像  
+21 从上往下打印二叉树  
+22 二叉搜索树的后序遍历序列
+23 二叉树中和为某一值的路径
+37 二叉树的深度
+38 平衡二叉树
+56 二叉树的下一个结点
+61 二叉搜索树的第k个结点 </code></pre><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><h3 id="04-重建二叉树"><a href="#04-重建二叉树" class="headerlink" title="04 重建二叉树"></a>04 重建二叉树</h3><p><strong><em>输入某二叉树的前序遍历和中序遍历的结果，请重建出该二叉树。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。例如输入前序遍历序列{1,2,4,7,3,5,6,8}和中序遍历序列{4,7,2,1,5,3,8,6}，则重建二叉树并返回。</em></strong></p>
+<pre><code>public class Solution {
+    public TreeNode reConstructBinaryTree(int [] pre,int [] in) {
+        return help(pre, in, 0, pre.length-1, 0, in.length-1);
+    }
+    /*
+    前序 1    2 4 7    3 5 6 8
+    中序 4 7 2    1    5 3 8 6       
+    */
+    // left、right是前序起止位置，left1、right1是中序起止位置
+    public TreeNode help(int[] pre, int[] in, int left, int right, int left1, int right1) {
+        if(left &gt;= pre.length || left1 &gt;= in.length || left &gt; right || left1 &gt; right1)
+            return null;
+        int val = pre[left];
+        TreeNode node = new TreeNode(val); 
+
+        //在中序遍历中找到递归的位置
+        int count = left1;
+        while(in[count] != val)
+            count ++;
+        count = count - left1 ;
+
+        node.left = help(pre, in, left+1, left+count, left1, left1+count-1);
+        node.right = help(pre, in, left+count+1, right,left1+count+1, right1);
+        return node;
+    }
+}</code></pre><h3 id="16-树的子结构"><a href="#16-树的子结构" class="headerlink" title="16 树的子结构"></a>16 树的子结构</h3><p><strong><em>输入两棵二叉树A，B，判断B是不是A的子结构。（ps：我们约定空树不是任意一个树的子结构）</em></strong></p>
+<pre><code>/*
+此题需要使用两次递归，先找到根节点相同的结点，再判断结构是否相同
+*/
+public class Solution {
+    public boolean HasSubtree(TreeNode root1,TreeNode root2) {
+        if(root1 == null || root2 == null)
+            return false;
+        if(root1.val == root2.val &amp;&amp; IsContain(root1, root2))
+            return true;
+        //递归
+        return HasSubtree(root1.left, root2) || HasSubtree(root1.right, root2);
+    }
+
+    //判断是否包含 （以两个root为起始的结构）
+    public boolean IsContain(TreeNode root1, TreeNode root2) {
+        if(root1 == null &amp;&amp; root2 !=null)
+            return false;
+        if(root2 == null)
+            return true;
+        if(root1.val != root2.val)
+            return false;        
+        //递归
+        return IsContain(root1.left, root2.left) &amp;&amp; IsContain(root1.right, root2.right);
+    }
+}</code></pre><h3 id="17-二叉树的镜像"><a href="#17-二叉树的镜像" class="headerlink" title="17 二叉树的镜像"></a>17 二叉树的镜像</h3><p><strong><em>操作给定的二叉树，将其变换为源二叉树的镜像。</em></strong></p>
+<pre><code>public class Solution {
+    public void Mirror(TreeNode root) {
+
+        if(root != null) {
+            TreeNode temp = root.left;
+            root.left = root.right;
+            root.right = temp;
+
+            if(root.left==null &amp;&amp; root.right==null)
+                return;
+            Mirror(root.left);
+            Mirror(root.right);
+        }
+
+    }
+}</code></pre><h3 id="21-从上往下打印二叉树"><a href="#21-从上往下打印二叉树" class="headerlink" title="21 从上往下打印二叉树"></a>21 从上往下打印二叉树</h3><p><strong><em>从上往下打印出二叉树的每个节点，同层节点从左至右打印。</em></strong></p>
+<pre><code>import java.util.*;
+public class Solution {
+    public ArrayList&lt;Integer&gt; PrintFromTopToBottom(TreeNode root) {
+        ArrayList&lt;Integer&gt; list = new ArrayList&lt;&gt;();
+        if (root == null)
+            return list;
+        Deque&lt;TreeNode&gt; deque = new LinkedList&lt;TreeNode&gt;();
+        deque.add(root);
+
+        while(!deque.isEmpty()) {
+            TreeNode node = deque.pop();
+            list.add(node.val);
+            if(node.left != null)
+                deque.add(node.left);
+            if(node.right != null)
+                deque.add(node.right);
+        }
+
+        return list;
+    }
+}</code></pre><h3 id="22-二叉搜索树的后序遍历序列"><a href="#22-二叉搜索树的后序遍历序列" class="headerlink" title="22 二叉搜索树的后序遍历序列"></a>22 二叉搜索树的后序遍历序列</h3><p><strong><em>输入一个整数数组，判断该数组是不是某二叉搜索树的后序遍历的结果。如果是则输出Yes,否则输出No。假设输入的数组的任意两个数字都互不相同。</em></strong></p>
+<pre><code>/*
+搜索二叉树 后序遍历特点： 1 3 2   7 6 8   5
+                        小     大     节点
+*/
+public class Solution {
+    public boolean VerifySquenceOfBST(int [] sequence) {
+        int count = sequence.length;
+        if(count == 0)
+            return false;
+        return isRight(sequence, 0, count-1);
+
+    }
+
+    public boolean isRight(int[] sequence, int start, int end) {
+        // 结束条件
+        if(start &gt;= end) 
+            return true;
+        //业务处理
+        int i = end - 1;
+        while(sequence[i] &gt; sequence[end] &amp;&amp; i &gt; start)
+            i--;
+        for(int left=start; left&lt;i; left++){
+            if(sequence[left] &gt; sequence[end])
+                return false;
+        }
+
+        //递归
+        return isRight(sequence, start, i) &amp;&amp; isRight(sequence, i+1, end-1);
+    }
+}</code></pre><h3 id="23-二叉树中和为某一值的路径"><a href="#23-二叉树中和为某一值的路径" class="headerlink" title="23 二叉树中和为某一值的路径"></a>23 二叉树中和为某一值的路径</h3><p><strong><em>输入一颗二叉树的根节点和一个整数，打印出二叉树中结点值的和为输入整数的所有路径。路径定义为从树的根结点开始往下一直到叶结点所经过的结点形成一条路径。(注意: 在返回值的list中，数组长度大的数组靠前)</em></strong></p>
+<pre><code>//这是一道典型的深度优先搜索题目（DFS）
+public class Solution {
+    public ArrayList&lt;ArrayList&lt;Integer&gt;&gt; FindPath(TreeNode root,int target) {
+        ArrayList&lt;ArrayList&lt;Integer&gt;&gt; result = new ArrayList&lt;&gt;();
+        if (root == null)
+            return result;
+        find(root, target, 0, new ArrayList&lt;&gt;(), result);
+        return result;
+    }
+
+    public void find(TreeNode node, int target, int sum, ArrayList&lt;Integer&gt; list, ArrayList&lt;ArrayList&lt;Integer&gt;&gt; result) {
+        //递归结束条件
+        if(sum == target &amp;&amp; node == null &amp;&amp; !result.contains(list)) {
+            result.add(list);
+            return;
+        }
+        if(node == null)
+            return;
+
+        //业务操作
+        sum += node.val;
+        list.add(node.val);
+
+        if(sum &gt; target)
+            return;
+
+        //递归
+        find(node.left, target, sum, new ArrayList&lt;&gt;(list), result);
+        find(node.right, target, sum, new ArrayList&lt;&gt;(list), result);
+    }
+}</code></pre><h3 id="37-二叉树的深度"><a href="#37-二叉树的深度" class="headerlink" title="37 二叉树的深度"></a>37 二叉树的深度</h3><p><strong><em>输入一棵二叉树，求该树的深度。从根结点到叶结点依次经过的结点（含根、叶结点）形成树的一条路径，最长路径的长度为树的深度。</em></strong></p>
+<pre><code>public class Solution {
+    public int TreeDepth(TreeNode root) {
+        if(root == null) 
+            return 0;
+        int leftTreeDepth = TreeDepth(root.left);
+        int rightTreeDepth = TreeDepth(root.right);
+        return leftTreeDepth &gt; rightTreeDepth ? (leftTreeDepth+1) : (rightTreeDepth+1);
+    }
+}</code></pre><h3 id="38-平衡二叉树"><a href="#38-平衡二叉树" class="headerlink" title="38 平衡二叉树"></a>38 平衡二叉树</h3><p><strong><em>输入一棵二叉树，判断该二叉树是否是平衡二叉树。</em></strong></p>
+<pre><code>public class Solution {
+    public boolean IsBalanced_Solution(TreeNode root) {
+        if(root == null)
+            return true;
+        //深度差小于1为平衡二叉树
+        if(TreeDepth(root.left)-TreeDepth(root.right) &gt; 1 )
+            return false;
+        if(TreeDepth(root.right)-TreeDepth(root.left) &gt; 1 )
+            return false;
+        return IsBalanced_Solution(root.left) &amp;&amp; IsBalanced_Solution(root.right);
+    }
+
+    //求一个结点的深度
+    public int TreeDepth(TreeNode node) {
+        if(node == null) 
+            return 0;
+        int leftDepth = TreeDepth(node.left);
+        int rightDepth = TreeDepth(node.right);
+        return leftDepth &gt; rightDepth ? (leftDepth+1) : (rightDepth+1);
+    }
+}</code></pre><h3 id="56-二叉树的下一个结点"><a href="#56-二叉树的下一个结点" class="headerlink" title="56 二叉树的下一个结点"></a>56 二叉树的下一个结点</h3><p><strong><em>给定一个二叉树和其中的一个结点，请找出中序遍历顺序的下一个结点并且返回。注意，树中的结点不仅包含左右子结点，同时包含指向父结点的指针。</em></strong></p>
+<pre><code>/*
+有右子树：打印右子树的最左结点
+无右子树：
+    是左孩子：打印父亲
+    是右孩子：往上找，直到上级是上上个级的左孩子为止
+*/
+public class Solution {
+    public TreeLinkNode GetNext(TreeLinkNode pNode)
+    {
+        //有右子树
+        if(pNode.right != null) {
+            pNode = pNode.right;
+            while(pNode.left != null)
+                pNode = pNode.left;
+            return pNode;
+        }
+
+        //无右子树，且是左孩子
+        if(pNode.next != null &amp;&amp; pNode.next.left == pNode) {
+            return pNode.next;
+        }
+
+        //无右子树，且是右孩子
+        if(pNode.next != null &amp;&amp; pNode.next.right == pNode) {
+            pNode = pNode.next;
+            while(pNode.next != null &amp;&amp; pNode.next.right == pNode)
+                pNode = pNode.next;
+            return pNode.next;
+        }
+        return null;
+    }
+}</code></pre><h3 id="61-二叉搜索树的第k个结点"><a href="#61-二叉搜索树的第k个结点" class="headerlink" title="61 二叉搜索树的第k个结点"></a>61 二叉搜索树的第k个结点</h3><p><strong><em>给定一棵二叉搜索树，请找出其中的第k小的结点。例如， （5，3，7，2，4，6，8）    中，按结点数值大小顺序第三小结点的值为4。</em></strong></p>
+<pre><code>import java.util.ArrayList;
+public class Solution {
+    TreeNode KthNode(TreeNode pRoot, int k)
+    {
+        if(pRoot == null || k &lt;= 0)
+            return null;
+        //1.中序遍历
+        ArrayList&lt;TreeNode&gt; treeNodes = new ArrayList&lt;&gt;();
+        inOrder(pRoot, treeNodes);
+
+        //2.找到第k个结点
+        if(k &gt; treeNodes.size())
+            return null;
+        return treeNodes.get(k-1);
+
+    }
+
+    //中序遍历
+    public void inOrder(TreeNode node, ArrayList&lt;TreeNode&gt; treeNodes) {
+        if(node == null) 
+            return;
+        inOrder(node.left, treeNodes);
+        treeNodes.add(node);
+        inOrder(node.right, treeNodes);
+    }
+}</code></pre>
       
     </div>
 
@@ -398,6 +667,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/剑指Offer/" rel="tag"># 剑指Offer</a>
+          
+        </div>
       
 
       
@@ -465,8 +740,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -504,7 +788,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">5</span>
+                      
+                    
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -553,7 +839,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">18</span>
+                      
+                    
+                    <span class="site-state-item-count">19</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -579,6 +867,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目大纲"><span class="nav-text">题目大纲</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解题思路"><span class="nav-text">解题思路</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#04-重建二叉树"><span class="nav-text">04 重建二叉树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16-树的子结构"><span class="nav-text">16 树的子结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#17-二叉树的镜像"><span class="nav-text">17 二叉树的镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#21-从上往下打印二叉树"><span class="nav-text">21 从上往下打印二叉树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#22-二叉搜索树的后序遍历序列"><span class="nav-text">22 二叉搜索树的后序遍历序列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#23-二叉树中和为某一值的路径"><span class="nav-text">23 二叉树中和为某一值的路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#37-二叉树的深度"><span class="nav-text">37 二叉树的深度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#38-平衡二叉树"><span class="nav-text">38 平衡二叉树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#56-二叉树的下一个结点"><span class="nav-text">56 二叉树的下一个结点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#61-二叉搜索树的第k个结点"><span class="nav-text">61 二叉搜索树的第k个结点</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
