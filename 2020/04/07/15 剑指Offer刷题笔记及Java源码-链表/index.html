@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.3.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="最近又刷了一遍剑指Offer，本文介绍剑指Offer中与树有关题目的解题思路和Java源码。所有代码都是在牛客剑指Offer上提交通过的。 题目大纲03 从尾到头打印链表 13 链表中倒数第K个结点 14 反转链表 15 合并两个排序的链表 24 复杂链表的复制 25 二叉搜索树与双向链表 35 两个链表的第一个公共结点 53 链表中环的入口结点 55 删除链表中重复的结点解题思路03 从尾到头打">
+<meta name="keywords" content="剑指Offer">
+<meta property="og:type" content="article">
+<meta property="og:title" content="剑指Offer刷题笔记及Java源码-链表">
+<meta property="og:url" content="http://yoursite.com/2020/04/07/15 剑指Offer刷题笔记及Java源码-链表/index.html">
+<meta property="og:site_name" content="Code Song">
+<meta property="og:description" content="最近又刷了一遍剑指Offer，本文介绍剑指Offer中与树有关题目的解题思路和Java源码。所有代码都是在牛客剑指Offer上提交通过的。 题目大纲03 从尾到头打印链表 13 链表中倒数第K个结点 14 反转链表 15 合并两个排序的链表 24 复杂链表的复制 25 二叉搜索树与双向链表 35 两个链表的第一个公共结点 53 链表中环的入口结点 55 删除链表中重复的结点解题思路03 从尾到头打">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-04-07T08:40:09.832Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="剑指Offer刷题笔记及Java源码-链表">
+<meta name="twitter:description" content="最近又刷了一遍剑指Offer，本文介绍剑指Offer中与树有关题目的解题思路和Java源码。所有代码都是在牛客剑指Offer上提交通过的。 题目大纲03 从尾到头打印链表 13 链表中倒数第K个结点 14 反转链表 15 合并两个排序的链表 24 复杂链表的复制 25 二叉搜索树与双向链表 35 两个链表的第一个公共结点 53 链表中环的入口结点 55 删除链表中重复的结点解题思路03 从尾到头打">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/04/07/15 剑指Offer刷题笔记及Java源码-链表/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>剑指Offer刷题笔记及Java源码-链表 | Code Song</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Code Song</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/07/15 剑指Offer刷题笔记及Java源码-链表/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jacob Song">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Code Song">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">剑指Offer刷题笔记及Java源码-链表
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-04-07 16:41:05 / 修改时间：16:40:09" itemprop="dateCreated datePublished" datetime="2020-04-07T16:41:05+08:00">2020-04-07</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/剑指Offer/" itemprop="url" rel="index"><span itemprop="name">剑指Offer</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>最近又刷了一遍剑指Offer，本文介绍剑指Offer中与树有关题目的解题思路和Java源码。<br>所有代码都是在牛客剑指Offer上提交通过的。</p>
+<h2 id="题目大纲"><a href="#题目大纲" class="headerlink" title="题目大纲"></a>题目大纲</h2><pre><code>03 从尾到头打印链表
+13 链表中倒数第K个结点
+14 反转链表
+15 合并两个排序的链表
+24 复杂链表的复制
+25 二叉搜索树与双向链表
+35 两个链表的第一个公共结点
+53 链表中环的入口结点
+55 删除链表中重复的结点</code></pre><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><h3 id="03-从尾到头打印链表"><a href="#03-从尾到头打印链表" class="headerlink" title="03 从尾到头打印链表"></a>03 从尾到头打印链表</h3><p><strong><em>输入一个链表，按链表从尾到头的顺序返回一个ArrayList。</em></strong></p>
+<pre><code>import java.util.ArrayList;
+import java.util.Stack;
+public class Solution {
+    public ArrayList&lt;Integer&gt; printListFromTailToHead(ListNode listNode) {
+        Stack&lt;Integer&gt; stack = new Stack&lt;&gt;();
+        while (listNode != null) {
+            stack.push(listNode.val);
+            listNode = listNode.next;
+        }
+
+        ArrayList result = new ArrayList&lt;Integer&gt;();
+        while (!stack.isEmpty()) {
+            result.add(stack.pop());
+        }
+
+        return result;        
+    }
+}</code></pre><h3 id="13-链表中倒数第K个结点"><a href="#13-链表中倒数第K个结点" class="headerlink" title="13 链表中倒数第K个结点"></a>13 链表中倒数第K个结点</h3><p><strong><em>输入一个链表，输出该链表中倒数第k个结点。</em></strong></p>
+<pre><code>//使用两个指针，front领先behind K-1个结点
+//front到尾结点时，behind即为结果
+public class Solution {
+    public ListNode FindKthToTail(ListNode head,int k) {
+        if (head == null || k == 0)
+            return null;
+        ListNode front = head;
+        ListNode behind = head;
+
+        for(int i = 1; i &lt; k; i++) {
+            if (front.next == null) 
+                return null;
+            front = front.next;
+
+        }
+
+        while (front.next != null) {
+            front = front.next;
+            behind = behind.next;
+        }
+        return behind;
+    }
+}</code></pre><h3 id="14-反转链表"><a href="#14-反转链表" class="headerlink" title="14 反转链表"></a>14 反转链表</h3><p><strong><em>输入一个链表，反转链表后，输出新链表的表头。</em></strong></p>
+<pre><code>public class Solution {
+    public ListNode ReverseList(ListNode head) {
+        if (head == null || head.next == null) 
+            return head;
+
+        ListNode newHead = head;
+        ListNode pre = null;
+        ListNode temp = null;
+        while(newHead != null) {
+            pre = newHead;
+            newHead = newHead.next;
+            pre.next = temp;
+            temp = pre;
+        }
+        return pre;
+    }
+}</code></pre><h3 id="15-合并两个排序的链表"><a href="#15-合并两个排序的链表" class="headerlink" title="15 合并两个排序的链表"></a>15 合并两个排序的链表</h3><p><strong><em>输入两个单调递增的链表，输出两个链表合成后的链表，当然我们需要合成后的链表满足单调不减规则。</em></strong></p>
+<pre><code>// 使用递归
+public class Solution {
+    public ListNode Merge(ListNode list1,ListNode list2) {
+        if (list1 == null)
+            return list2;
+        if (list2 == null)
+            return list1;
+
+        //哪个头结点小，哪个作为结果的头结点
+        if (list1.val &gt;= list2.val) {
+            list2.next = Merge(list1, list2.next);
+            return list2;
+        } else {
+            list1.next = Merge(list1.next, list2);
+            return list1;
+        }
+
+    }
+}</code></pre><h3 id="24-复杂链表的复制"><a href="#24-复杂链表的复制" class="headerlink" title="24 复杂链表的复制"></a>24 复杂链表的复制</h3><p><strong><em>输入一个复杂链表（每个节点中有节点值，以及两个指针，一个指向下一个节点，另一个特殊指针指向任意一个节点），返回结果为复制后复杂链表的head。（注意，输出结果中请不要返回参数中的节点引用，否则判题程序会直接返回空）</em></strong></p>
+<pre><code>//不需要特殊技巧，一个结点一个结点地next就可以了
+//正确理解RandomListNode数据结构
+//复制的意思是新建结点，不能返回已有的参数结点
+public class Solution {
+    public RandomListNode Clone(RandomListNode pHead)
+    {
+        if (pHead == null)
+            return null;
+        RandomListNode head = new RandomListNode(pHead.label);
+        RandomListNode result = head;
+
+        if(pHead.random != null) 
+            head.random = new RandomListNode(pHead.random.label);
+
+        while(pHead.next != null) {
+            pHead = pHead.next;
+            head.next = new RandomListNode(pHead.label);
+            head = head.next;
+            if (pHead.random != null)
+                head.random = new RandomListNode(pHead.random.label);
+
+        }
+        return result;
+    }
+}</code></pre><h3 id="25-二叉搜索树与双向链表"><a href="#25-二叉搜索树与双向链表" class="headerlink" title="25 二叉搜索树与双向链表"></a>25 二叉搜索树与双向链表</h3><p><strong><em>输入一棵二叉搜索树，将该二叉搜索树转换成一个排序的双向链表。要求不能创建任何新的结点，只能调整树中结点指针的指向。</em></strong></p>
+<pre><code>//参考博客https://blog.csdn.net/jiangjiang_jian/article/details/81637574
+
+//将二叉搜索树中序遍历
+public class Solution {
+    TreeNode head = null;    //头结点
+    TreeNode temp = null;    //移动的结点
+    public TreeNode Convert(TreeNode pRootOfTree) {
+        InOrder(pRootOfTree);
+        return head;
+    }
+
+    //中序遍历
+    public void InOrder(TreeNode pRoot) {
+        if (pRoot == null)
+            return;
+
+        InOrder(pRoot.left);
+
+        if (head == null) {    //仅使用一次，即head为中序遍历的第一个结点时
+            head = pRoot;
+            temp = pRoot;
+        } else {
+            temp.right = pRoot;
+            pRoot.left = temp;
+            temp = pRoot;
+        }
+
+        InOrder(pRoot.right);
+    }
+}</code></pre><h3 id="35-两个链表的第一个公共结点"><a href="#35-两个链表的第一个公共结点" class="headerlink" title="35 两个链表的第一个公共结点"></a>35 两个链表的第一个公共结点</h3><p><strong><em>输入两个链表，找出它们的第一个公共结点。（注意因为传入数据是链表，所以错误测试数据的提示是用其他方式显示的，保证传入数据是正确的）</em></strong></p>
+<pre><code>//齐头并进
+public class Solution {
+    public ListNode FindFirstCommonNode(ListNode pHead1, ListNode pHead2) {
+        if (pHead1 == null || pHead2 == null)
+            return null;
+
+        //求两个链表的长度
+        ListNode node1 = pHead1;
+        int len1 = 0;
+        while(node1 != null) {
+            node1 = node1.next;
+            len1 ++;
+        }
+
+        ListNode node2 = pHead2;
+        int len2 = 0;
+        while(node2 != null) {
+            node2 = node2.next;
+            len2++;
+        }
+
+        //较长的链表先移动
+        int diff = len1 - len2;
+        if (diff &gt;= 0) {
+            while (diff &gt;0 ) {
+                pHead1 = pHead1.next;
+                diff --;
+            }
+        } else {
+            while (diff &lt; 0) {
+                pHead2 = pHead2.next;
+                diff ++;
+            }
+        }
+
+        //齐头并进
+        while(pHead1 != null &amp;&amp; pHead1.val != pHead2.val) {
+            pHead1 = pHead1.next;
+            pHead2 = pHead2.next;
+        }
+        return pHead1;
+    }
+}</code></pre><h3 id="53-链表中环的入口结点"><a href="#53-链表中环的入口结点" class="headerlink" title="53 链表中环的入口结点"></a>53 链表中环的入口结点</h3><p><strong><em>给一个链表，若其中包含环，请找出该链表的环的入口结点，否则，输出null。</em></strong></p>
+<pre><code>// 如果有环，快慢指针一定会相遇
+// 相遇点出发、头结点出发 的两个指针，会在环入口处相遇
+public class Solution {
+
+    public ListNode EntryNodeOfLoop(ListNode pHead)
+    {    
+        ListNode fast = pHead;
+        ListNode slow = pHead;
+
+        while(fast != null &amp;&amp; fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+            if (fast == slow)    //有环，相遇
+                break;
+        }        
+        if(fast == null || fast.next == null)     //走到头了，无环
+            return null;
+
+        fast = pHead;
+        while (fast != slow) {
+            fast = fast.next;
+            slow = slow.next;
+        }
+        return fast;
+
+    }
+}</code></pre><h3 id="55-删除链表中重复的结点"><a href="#55-删除链表中重复的结点" class="headerlink" title="55 删除链表中重复的结点"></a>55 删除链表中重复的结点</h3><p><strong><em>在一个排序的链表中，存在重复的结点，请删除该链表中重复的结点，重复的结点不保留，返回链表头指针。 例如，链表1-&gt;2-&gt;3-&gt;3-&gt;4-&gt;4-&gt;5 处理后为 1-&gt;2-&gt;5</em></strong></p>
+<pre><code>// 此题关键在于新建一个空节点，指向头结点
+public class Solution {
+    public ListNode deleteDuplication(ListNode pHead){
+        if (pHead == null)
+            return null;
+        ListNode result = new ListNode(0);
+        result.next = pHead;
+
+        ListNode pre = result;
+        ListNode cur = result.next;
+        while(cur != null) {
+            if(cur.next != null &amp;&amp; cur.val == cur.next.val) {
+                while (cur.next != null &amp;&amp; cur.val == cur.next.val)
+                    cur = cur.next;
+                pre.next = cur.next;
+                cur = cur.next;
+            }
+            else {
+                pre = pre.next;
+                cur = cur.next;
+            }
+        }
+
+        return result.next;
+    }
+}</code></pre>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/剑指Offer/" rel="tag"># 剑指Offer</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/03/23/14 七牛云配置/" rel="next" title="Spring Boot使用七牛云存储的配置方法">
+                <i class="fa fa-chevron-left"></i> Spring Boot使用七牛云存储的配置方法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Jacob Song</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">20</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目大纲"><span class="nav-text">题目大纲</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解题思路"><span class="nav-text">解题思路</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#03-从尾到头打印链表"><span class="nav-text">03 从尾到头打印链表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-链表中倒数第K个结点"><span class="nav-text">13 链表中倒数第K个结点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-反转链表"><span class="nav-text">14 反转链表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15-合并两个排序的链表"><span class="nav-text">15 合并两个排序的链表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#24-复杂链表的复制"><span class="nav-text">24 复杂链表的复制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#25-二叉搜索树与双向链表"><span class="nav-text">25 二叉搜索树与双向链表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#35-两个链表的第一个公共结点"><span class="nav-text">35 两个链表的第一个公共结点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#53-链表中环的入口结点"><span class="nav-text">53 链表中环的入口结点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#55-删除链表中重复的结点"><span class="nav-text">55 删除链表中重复的结点</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jacob Song</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.9.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a> v6.3.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.3.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
